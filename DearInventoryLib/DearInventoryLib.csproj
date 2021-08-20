@@ -52,10 +52,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\ApiRequest.cs" />
+    <Compile Include="Api\BankAccountsRequest.cs" />
     <Compile Include="Interface\IAttributeSetRequest.cs" />
+    <Compile Include="Interface\IBankAccountsRequest.cs" />
     <Compile Include="Interface\IMeRequest.cs" />
     <Compile Include="Model\AttributeSet.cs" />
+    <Compile Include="Model\BankAccount.cs" />
     <Compile Include="Model\Me.cs" />
+    <Compile Include="Model\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Api\AttributeSetRequest.cs" />
     <Compile Include="Api\MeRequest.cs" />
