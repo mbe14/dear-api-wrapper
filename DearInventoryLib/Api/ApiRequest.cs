@@ -21,5 +21,6 @@ namespace DearInventoryLib.Api
         public MeRequest Me { get { return new MeRequest(_httpClient, _accountId, _applicationKey); } }
         public AttributeSetRequest AttributeSet { get { return new AttributeSetRequest(_httpClient, _accountId, _applicationKey); } }
         public BankAccountsRequest BankAccounts { get { return new BankAccountsRequest(_httpClient, _accountId, _applicationKey); } }
+        public ProductRequest Product { get { return new ProductRequest(_httpClient, _accountId, _applicationKey); } }
     }
 }

@@ -1,13 +1,14 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DearInventoryLib.Model
+namespace DearInventoryLib.Model.Product
 {
-    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
     public class PriceTiers
     {
         [JsonProperty("Tier 1")]
@@ -100,9 +101,9 @@ namespace DearInventoryLib.Model
         public string Name { get; set; }
         public string Category { get; set; }
         public object Brand { get; set; }
-        public string Type { get; set; }
-        public string CostingMethod { get; set; }
-        public string DropShipMode { get; set; }
+        public Type Type { get; set; }
+        public CostingMethod CostingMethod { get; set; }
+        public DropShipMode DropShipMode { get; set; }
         public string DefaultLocation { get; set; }
         public decimal Length { get; set; }
         public decimal Width { get; set; }
@@ -142,7 +143,7 @@ namespace DearInventoryLib.Model
         public object AttributeSet { get; set; }
         public object DiscountRule { get; set; }
         public string Tags { get; set; }
-        public string Status { get; set; }
+        public Status Status { get; set; }
         public string StockLocator { get; set; }
         public object COGSAccount { get; set; }
         public object RevenueAccount { get; set; }
@@ -159,7 +160,7 @@ namespace DearInventoryLib.Model
         public decimal QuantityToProduce { get; set; }
         public string AssemblyInstructionURL { get; set; }
         public string AssemblyCostEstimationMethod { get; set; }
-        public List<object> Suppliers { get; set; }
+        public List<Supplier> Suppliers { get; set; }
         public List<ReorderLevel> ReorderLevels { get; set; }
         public List<BillOfMaterialsProduct> BillOfMaterialsProducts { get; set; }
         public List<BillOfMaterialsService> BillOfMaterialsServices { get; set; }
@@ -174,5 +175,76 @@ namespace DearInventoryLib.Model
         public List<Product> Products { get; set; }
     }
 
+    public class Supplier
+    {
+        public Guid SupplierID { get; set; }
+        public string SupplierName { get; set; }
+        public string SupplierInventoryCode { get; set; }
+        public string SupplierProductName { get; set; }
+        public decimal Cost { get; set; }
+        public decimal FixedCost { get; set; }
+        public string Currency { get; set; }
+        public bool DropShip { get; set; }
+        public DateTime LastSupplied { get; set; }
+        public string URL { get; set; }
 
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum Status
+    {
+        [EnumMember(Value = "Deprecated")]
+        Deprecated,
+        
+        [EnumMember(Value = "Active")]
+        Active
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum Type
+    {
+        [EnumMember(Value = "Stock")]
+        Stock,
+        
+        [EnumMember(Value = "Service")]
+        Service
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum CostingMethod
+    {
+        [EnumMember(Value = "FIFO")]
+        FIFO,
+        
+        [EnumMember(Value = "Special - Batch")]
+        Special_Batch,
+        
+        [EnumMember(Value = "Special - Serial Number")]
+        Special_SerialNumber,
+        
+        [EnumMember(Value = "FIFO - Serial Number")]
+        FIFO_SerialNumber,
+        
+        [EnumMember(Value = "FIFO - Batch")]
+        FIFO_Batch,
+
+        [EnumMember(Value = "FEFO - Batch")]
+        FEFO_Batch,
+
+        [EnumMember(Value = "FEFO - Serial Number")]
+        FEFO_SerialNumber
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum DropShipMode
+    {
+        [EnumMember(Value = "No Drop Ship")]
+        NoDropShip,
+
+        [EnumMember(Value = "Optional Drop Ship")]
+        OptionalDropShip,
+
+        [EnumMember(Value = "Always Drop Ship")]
+        AlwaysDropShip
+    }
 }
