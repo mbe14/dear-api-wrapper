@@ -7,8 +7,8 @@ namespace DearInventoryLib.Interface
     interface IBankAccountsRequest
     {
         List<BankAccount> GetAll();
-        BankAccount GetById(Guid guid);
-        BankAccount GetByAccountName(string accountName);
-        BankAccount GetByBank(string bank);
+        BankAccount GetById(Guid Guid);
+        BankAccount GetByAccountName(string AccountName);
+        BankAccount GetByBank(string Bank);
     }
 }

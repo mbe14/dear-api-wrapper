@@ -10,7 +10,7 @@ namespace DearInventoryLib.Api
 {
     public class BankAccountsRequest : RequestBase, IBankAccountsRequest
     {
-        public BankAccountsRequest(HttpClient httpClient, string accountId, string applicationKey) : base(httpClient, accountId, applicationKey)
+        public BankAccountsRequest(HttpClient HttpClient, string AccountId, string ApplicationKey) : base(HttpClient, AccountId, ApplicationKey)
         {
 
         }
@@ -43,9 +43,9 @@ namespace DearInventoryLib.Api
             return result;
         }
 
-        public BankAccount GetById(Guid guid)
+        public BankAccount GetById(Guid Guid)
         {
-            string id = guid.ToString();
+            string id = Guid.ToString();
             BankAccount result = null;
             using (var response = _httpClient.GetAsync($"ref/account/bank?ID={id}").GetAwaiter().GetResult())
             {
@@ -56,9 +56,9 @@ namespace DearInventoryLib.Api
             return result;
         }
 
-        public BankAccount GetByAccountName(string name)
+        public BankAccount GetByAccountName(string Name)
         {
-            string s = name;
+            string s = Name;
             BankAccount result = null;
             using (var response = _httpClient.GetAsync($"ref/account/bank?Name={s}").GetAwaiter().GetResult())
             {
@@ -69,9 +69,9 @@ namespace DearInventoryLib.Api
             return result;
         }
 
-        public BankAccount GetByBank(string bank)
+        public BankAccount GetByBank(string Bank)
         {
-            string s = bank;
+            string s = Bank;
             BankAccount result = null;
             using (var response = _httpClient.GetAsync($"ref/account/bank?Bank={s}").GetAwaiter().GetResult())
             {

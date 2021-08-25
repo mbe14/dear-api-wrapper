@@ -8,7 +8,7 @@ namespace DearInventoryLib.Api
 {
     public class MeRequest : RequestBase, IMeRequest
     {
-        public MeRequest(HttpClient httpClient, string accountId, string applicationKey) : base(httpClient, accountId, applicationKey)
+        public MeRequest(HttpClient HttpClient, string AccountId, string ApplicationKey) : base(HttpClient, AccountId, ApplicationKey)
         {
 
         }

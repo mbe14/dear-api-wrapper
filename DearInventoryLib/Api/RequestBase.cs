@@ -9,11 +9,11 @@ namespace DearInventoryLib.Api
         protected readonly string _accountId;
         protected readonly string _applicationKey;
 
-        public RequestBase(HttpClient httpClient, string accountId, string applicationKey)
+        public RequestBase(HttpClient HttpClient, string AccountId, string ApplicationKey)
         {
-            _httpClient = httpClient;
-            _accountId = accountId;
-            _applicationKey = applicationKey;
+            _httpClient = HttpClient;
+            _accountId = AccountId;
+            _applicationKey = ApplicationKey;
         }
     }
 }

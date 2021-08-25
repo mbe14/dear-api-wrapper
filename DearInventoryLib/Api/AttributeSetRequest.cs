@@ -10,7 +10,7 @@ namespace DearInventoryLib.Api
 {
     public class AttributeSetRequest : RequestBase, IAttributeSetRequest
     {
-        public AttributeSetRequest(HttpClient httpClient, string accountId, string applicationKey) : base(httpClient, accountId, applicationKey)
+        public AttributeSetRequest(HttpClient HttpClient, string AccountId, string ApplicationKey) : base(HttpClient, AccountId, ApplicationKey)
         {
             
         }
@@ -43,9 +43,9 @@ namespace DearInventoryLib.Api
             return result;
         }
 
-        public AttributeSetList GetById(Guid guid)
+        public AttributeSetList GetById(Guid Guid)
         {
-            string id = guid.ToString();
+            string id = Guid.ToString();
             AttributeSetList result = null;
             using (var response = _httpClient.GetAsync($"ref/attributeset?ID={id}").GetAwaiter().GetResult())
             {
@@ -56,9 +56,9 @@ namespace DearInventoryLib.Api
             return result;
         }
 
-        public AttributeSetList GetByName(string name)
+        public AttributeSetList GetByName(string Name)
         {
-            string s = name;
+            string s = Name;
             AttributeSetList result = null;
             using (var response = _httpClient.GetAsync($"ref/attributeset?Name={s}").GetAwaiter().GetResult())
             {
@@ -69,10 +69,10 @@ namespace DearInventoryLib.Api
             return result;
         }
 
-        public string Add(AttributeSetList attribute)
+        public string Add(AttributeSetList Attribute)
         {
             string result = string.Empty;
-            var data = JsonConvert.SerializeObject(attribute);
+            var data = JsonConvert.SerializeObject(Attribute);
             using (var content = new StringContent(data, System.Text.Encoding.Default, "application/json"))
             {
                 using (var response = _httpClient.PostAsync("ref/attributeset", content).GetAwaiter().GetResult())
@@ -85,10 +85,10 @@ namespace DearInventoryLib.Api
             return result;
         }
 
-        public bool Edit(AttributeSetList attribute)
+        public bool Edit(AttributeSetList Attribute)
         {
             bool result;
-            var data = JsonConvert.SerializeObject(attribute);
+            var data = JsonConvert.SerializeObject(Attribute);
             using (var content = new StringContent(data, System.Text.Encoding.Default, "application/json"))
             {
                 using (var response = _httpClient.PutAsync("ref/attributeset", content).GetAwaiter().GetResult())
@@ -101,9 +101,9 @@ namespace DearInventoryLib.Api
             return result;
         }
 
-        public bool Delete(Guid guid)
+        public bool Delete(Guid Guid)
         {
-            string id = guid.ToString();
+            string id = Guid.ToString();
             bool result;
             using (var response = _httpClient.DeleteAsync($"ref/attributeset?ID={id}").GetAwaiter().GetResult())
             {

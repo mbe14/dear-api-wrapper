@@ -7,10 +7,10 @@ namespace DearInventoryLib.Interface
     interface IAttributeSetRequest
     {
         List<AttributeSetList> GetAll();
-        AttributeSetList GetById(Guid guid);
-        AttributeSetList GetByName(string name);
-        string Add(AttributeSetList attribute);
-        bool Edit(AttributeSetList attribute); //ID is mandatory
-        bool Delete(Guid guid);
+        AttributeSetList GetById(Guid Guid);
+        AttributeSetList GetByName(string Name);
+        string Add(AttributeSetList Attribute);
+        bool Edit(AttributeSetList Attribute); //ID is mandatory
+        bool Delete(Guid Guid);
     }
 }

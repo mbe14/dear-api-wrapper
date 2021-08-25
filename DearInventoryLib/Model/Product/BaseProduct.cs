@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DearInventoryLib.Model.Common;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Runtime.Serialization;
@@ -38,46 +39,6 @@ namespace DearInventoryLib.Model.Product
         public object PurchaseTaxRule { get; set; }
         public object SaleTaxRule { get; set; }
         public CostingMethod CostingMethod { get; set; }
-        public DropShipMode DropShipMode { get; set; }        
+        public DropShipMode DropShipMode { get; set; }
     }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum DropShipMode
-    {
-        [EnumMember(Value = "No Drop Ship")]
-        NoDropShip,
-
-        [EnumMember(Value = "Optional Drop Ship")]
-        OptionalDropShip,
-
-        [EnumMember(Value = "Always Drop Ship")]
-        AlwaysDropShip
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum CostingMethod
-    {
-        [EnumMember(Value = "FIFO")]
-        FIFO,
-
-        [EnumMember(Value = "Special - Batch")]
-        Special_Batch,
-
-        [EnumMember(Value = "Special - Serial Number")]
-        Special_SerialNumber,
-
-        [EnumMember(Value = "FIFO - Serial Number")]
-        FIFO_SerialNumber,
-
-        [EnumMember(Value = "FIFO - Batch")]
-        FIFO_Batch,
-
-        [EnumMember(Value = "FEFO - Batch")]
-        FEFO_Batch,
-
-        [EnumMember(Value = "FEFO - Serial Number")]
-        FEFO_SerialNumber
-    }
-
-
 }

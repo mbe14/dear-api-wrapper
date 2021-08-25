@@ -1,6 +1,8 @@
 ﻿using DearInventoryLib.Api;
+using DearInventoryLib.Model.Common;
 using DearInventoryLib.Model.Product;
 using DearInventoryLib.Model.ProductAttachment;
+using DearInventoryLib.Model.ProductCategory;
 using DearInventoryLib.Model.ProductFamily;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -285,6 +287,66 @@ namespace Test.DearInventoryLib
                 exc = ex;
             }
             Assert.IsTrue(exc == null);
+        }
+
+        [TestMethod]
+        public void GetProductCategories()
+        {
+            Exception exc = null;
+            try
+            {
+                var result = Api.Product.GetProductCategories();
+            }
+            catch (Exception ex)
+            {
+                exc = ex;
+            }
+            Assert.IsTrue(exc == null);
+        }
+
+        [TestMethod]
+        public void AddProductCategory()
+        {
+            ProductCategory p = new ProductCategory()
+            {
+                Name = "Test Category"
+            };
+            Exception exc = null;
+            try
+            {
+                var result = Api.Product.AddProductCategory(p);
+            }
+            catch (Exception ex)
+            {
+                exc = ex;
+            }
+            Assert.IsTrue(exc == null);
+        }
+
+        [TestMethod]
+        public void EditProductCategory()
+        {
+            ProductCategory p = new ProductCategory()
+            {
+                ID = Guid.Parse(""),
+                Name = "New Test Category"
+            };
+            Exception exc = null;
+            try
+            {
+                var result = Api.Product.EditProductCategory(p);
+            }
+            catch (Exception ex)
+            {
+                exc = ex;
+            }
+            Assert.IsTrue(exc == null);
+        }
+
+        [TestMethod]
+        public void DeleteProductCategory()
+        {
+           //Add test
         }
 
     }

@@ -9,10 +9,10 @@ namespace DearInventoryLib.Api
         private static string _applicationKey;
         private static HttpClient _httpClient;
 
-        public ApiRequest(string accountId, string applicationKey)
+        public ApiRequest(string AccountId, string ApplicationKey)
         {
-            _accountId = accountId;
-            _applicationKey = applicationKey;
+            _accountId = AccountId;
+            _applicationKey = ApplicationKey;
             _httpClient = new HttpClient() { BaseAddress = new Uri("https://inventory.dearsystems.com/ExternalApi/v2/") };
             _httpClient.DefaultRequestHeaders.TryAddWithoutValidation("api-auth-accountid", _accountId);
             _httpClient.DefaultRequestHeaders.TryAddWithoutValidation("api-auth-applicationkey", _applicationKey);
@@ -22,5 +22,7 @@ namespace DearInventoryLib.Api
         public AttributeSetRequest AttributeSet { get { return new AttributeSetRequest(_httpClient, _accountId, _applicationKey); } }
         public BankAccountsRequest BankAccounts { get { return new BankAccountsRequest(_httpClient, _accountId, _applicationKey); } }
         public ProductRequest Product { get { return new ProductRequest(_httpClient, _accountId, _applicationKey); } }
+        public TaxRequest Tax { get { return new TaxRequest(_httpClient, _accountId, _applicationKey); } }
+        public AccountRequest Account { get { return new AccountRequest(_httpClient, _accountId, _applicationKey); } }
     }
 }

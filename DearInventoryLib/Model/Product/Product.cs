@@ -1,4 +1,5 @@
-﻿using DearInventoryLib.Model.Other;
+﻿using DearInventoryLib.Model.Common;
+using DearInventoryLib.Model.Other;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
@@ -148,16 +149,6 @@ namespace DearInventoryLib.Model.Product
         public DateTime LastSupplied { get; set; }
         public string URL { get; set; }
 
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum Status
-    {
-        [EnumMember(Value = "Deprecated")]
-        Deprecated,
-        
-        [EnumMember(Value = "Active")]
-        Active
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
