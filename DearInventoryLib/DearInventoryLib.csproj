@@ -62,9 +62,14 @@
     <Compile Include="Model\AttributeSet.cs" />
     <Compile Include="Model\BankAccount.cs" />
     <Compile Include="Model\Me.cs" />
+    <Compile Include="Model\Other\Attachment.cs" />
     <Compile Include="Model\Other\AttachmentLineModel.cs" />
     <Compile Include="Model\Product\Product.cs" />
-    <Compile Include="Model\Product\ProductAttachments.cs" />
+    <Compile Include="Model\Product\ProductAttachment.cs" />
+    <Compile Include="Model\Product\ProductAvailability.cs" />
+    <Compile Include="Model\Product\BaseProduct.cs" />
+    <Compile Include="Model\Product\ProductCategory.cs" />
+    <Compile Include="Model\Product\ProductFamily.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Api\AttributeSetRequest.cs" />
     <Compile Include="Api\MeRequest.cs" />

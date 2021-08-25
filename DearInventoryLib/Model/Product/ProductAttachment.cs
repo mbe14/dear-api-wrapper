@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace DearInventoryLib.Model.Product
+namespace DearInventoryLib.Model.ProductAttachment
 {
-    public class ProductAttachments
+    public class ProductAttachment
     {
         public Guid ProductID { get; set; }
         public string FileName { get; set; }

@@ -1,8 +1,12 @@
 ﻿using DearInventoryLib.Api;
 using DearInventoryLib.Model.Product;
+using DearInventoryLib.Model.ProductAttachment;
+using DearInventoryLib.Model.ProductFamily;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Configuration;
+using System.Linq;
+using Product = DearInventoryLib.Model.Product.Product;
 using Type = DearInventoryLib.Model.Product.Type;
 
 namespace Test.DearInventoryLib
@@ -56,7 +60,7 @@ namespace Test.DearInventoryLib
         [TestMethod]
         public void GetByGuid()
         {
-            Guid guid = Guid.Parse("4778e3a5-2cff-4723-ab2a-4cb74de37ebb");
+            Guid guid = Guid.Parse("907f3980-059b-4374-be26-42604e553257");
             Exception exc = null;
             try
             {
@@ -125,13 +129,13 @@ namespace Test.DearInventoryLib
         }
 
         [TestMethod]
-        public void GetAllProductAttachments()
+        public void GetProductAttachmentsByProductID()
         {
             Exception exc = null;
             try
             {
                 Guid productId = Guid.Parse("97c3db78-7500-43bc-9ec2-a9a44d80996b");
-                var attachments = Api.Product.GetAllProductAttachments(productId);
+                var attachments = Api.Product.GetProductAttachmentsByProductID(productId);
             }
             catch (Exception ex)
             {
@@ -139,5 +143,149 @@ namespace Test.DearInventoryLib
             }
             Assert.IsTrue(exc == null);
         }
+
+        [TestMethod]
+        public void AddProductAttachment()
+        {
+            Exception exc = null;
+            try
+            {
+                ProductAttachment productAttachment = new ProductAttachment()
+                {
+                    ProductID = Guid.Parse("97c3db78-7500-43bc-9ec2-a9a44d80996b"),
+                    FileName = "Test",
+                    Content = "f89sd7f9ds7fs",
+                    FileDownloadUrl = "https://file-examples-com.github.io/uploads/2017/10/file_example_JPG_100kB.jpg"
+                };
+                var attachments = Api.Product.AddProductAttachment(productAttachment);
+            }
+            catch (Exception ex)
+            {
+                exc = ex;
+            }
+            Assert.IsTrue(exc == null);
+        }
+
+        [TestMethod]
+        public void DeleteProductAttachment()
+        {
+            Guid attachmentId = Guid.Parse("47b19777-a767-4737-8998-f234b2a7b70f");
+            Exception exc = null;
+            try
+            {
+                var attachments = Api.Product.DeleteProductAttachment(attachmentId);
+            }
+            catch (Exception ex)
+            {
+                exc = ex;
+            }
+            Assert.IsTrue(exc == null);
+        }
+
+        [TestMethod]
+        public void GetProductsAvailability()
+        {
+            Exception exc = null;
+            try
+            {
+                var p = Api.Product.GetProductsAvailability();
+            }
+            catch (Exception ex)
+            {
+                exc = ex;
+            }
+            Assert.IsTrue(exc == null);
+        }
+
+        [TestMethod]
+        public void GetProductAvailabilityBySKU()
+        {
+            string sku = "101-Gloves-012";
+            Exception exc = null;
+            try
+            {
+                var p = Api.Product.GetProductAvailabilityBySKU(sku);
+            }
+            catch (Exception ex)
+            {
+                exc = ex;
+            }
+            Assert.IsTrue(exc == null);
+        }
+
+        [TestMethod]
+        public void GetProductAvailabilityByProductID()
+        {
+            Guid productId = Guid.Parse("4629d3ad-dd15-4700-8a52-8447bc9bc558");
+            Exception exc = null;
+            try
+            {
+                var p = Api.Product.GetProductAvailabilityByProductID(productId);
+            }
+            catch (Exception ex)
+            {
+                exc = ex;
+            }
+            Assert.IsTrue(exc == null);
+        }
+
+        [TestMethod]
+        public void GetAllProductFamilies()
+        {
+            Exception exc = null;
+            try
+            {
+                var p = Api.Product.GetAllProductFamilies();
+            }
+            catch (Exception ex)
+            {
+                exc = ex;
+            }
+            Assert.IsTrue(exc == null);
+        }
+
+        [TestMethod]
+        public void AddNewProductFamily()
+        {
+            Exception exc = null;
+            string rnd = Guid.NewGuid().ToString("n").Substring(0, 8);
+            try
+            {
+                var p = Api.Product.GetAllProductFamilies();
+                ProductFamily productFamily = new ProductFamily();
+                productFamily = p.FirstOrDefault();
+                productFamily.Name += rnd;
+                productFamily.SKU = rnd;
+                var result = Api.Product.AddProductFamily(productFamily);
+            }
+            catch (Exception ex)
+            {
+                exc = ex;
+            }
+            Assert.IsTrue(exc == null);
+        }
+
+        [TestMethod]
+        public void EditProductFamily()
+        {
+            Exception exc = null;
+            string rnd = Guid.NewGuid().ToString("n").Substring(0, 8);
+            try
+            {
+                var p = Api.Product.GetAllProductFamilies();
+                ProductFamily productFamily = new ProductFamily();
+                productFamily = p.FirstOrDefault();
+                productFamily.ID = Guid.Parse("2cb5b513-61f1-4ace-ab4f-814ec7965ff8");
+                productFamily.Name += rnd;
+                productFamily.SKU = rnd;
+                var result = Api.Product.EditProductFamily(productFamily);
+            }
+            catch (Exception ex)
+            {
+                exc = ex;
+            }
+            Assert.IsTrue(exc == null);
+        }
+
     }
 }

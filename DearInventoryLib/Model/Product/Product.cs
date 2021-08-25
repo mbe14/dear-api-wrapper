@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DearInventoryLib.Model.Other;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
@@ -86,49 +87,18 @@ namespace DearInventoryLib.Model.Product
         public string FromTo { get; set; }
     }
 
-    public class Attachment
+    public class Product : BaseProduct
     {
-        public string ID { get; set; }
-        public string ContentType { get; set; }
-        public string FileName { get; set; }
-        public string DownloadUrl { get; set; }
-    }
-
-    public class Product
-    {
-        public Guid ID { get; set; }
-        public string SKU { get; set; }
-        public string Name { get; set; }
-        public string Category { get; set; }
-        public object Brand { get; set; }
         public Type Type { get; set; }
-        public CostingMethod CostingMethod { get; set; }
-        public DropShipMode DropShipMode { get; set; }
-        public string DefaultLocation { get; set; }
         public decimal Length { get; set; }
         public decimal Width { get; set; }
         public decimal Height { get; set; }
-        public decimal Weight { get; set; }
-        public string UOM { get; set; }
+        public decimal Weight { get; set; }       
         public string WeightUnits { get; set; }
         public object DimensionsUnits { get; set; }
         public string Barcode { get; set; }
-        public decimal MinimumBeforeReorder { get; set; }
-        public decimal ReorderQuantity { get; set; }
-        public decimal PriceTier1 { get; set; }
-        public decimal PriceTier2 { get; set; }
-        public decimal PriceTier3 { get; set; }
-        public decimal PriceTier4 { get; set; }
-        public decimal PriceTier5 { get; set; }
-        public decimal PriceTier6 { get; set; }
-        public decimal PriceTier7 { get; set; }
-        public decimal PriceTier8 { get; set; }
-        public decimal PriceTier9 { get; set; }
-        public decimal PriceTier10 { get; set; }
         public PriceTiers PriceTiers { get; set; }
         public decimal AverageCost { get; set; }
-        public string ShortDescription { get; set; }
-        public string Description { get; set; }
         public string InternalNote { get; set; }
         public string AdditionalAttribute1 { get; set; }
         public string AdditionalAttribute2 { get; set; }
@@ -140,18 +110,8 @@ namespace DearInventoryLib.Model.Product
         public string AdditionalAttribute8 { get; set; }
         public string AdditionalAttribute9 { get; set; }
         public string AdditionalAttribute10 { get; set; }
-        public object AttributeSet { get; set; }
-        public object DiscountRule { get; set; }
-        public string Tags { get; set; }
         public Status Status { get; set; }
-        public string StockLocator { get; set; }
-        public object COGSAccount { get; set; }
-        public object RevenueAccount { get; set; }
-        public object ExpenseAccount { get; set; }
-        public object InventoryAccount { get; set; }
-        public object PurchaseTaxRule { get; set; }
-        public object SaleTaxRule { get; set; }
-        public DateTime LastModifiedOn { get; set; }
+        public string StockLocator { get; set; }       
         public bool Sellable { get; set; }
         public string PickZones { get; set; }
         public bool BillOfMaterial { get; set; }
@@ -208,43 +168,5 @@ namespace DearInventoryLib.Model.Product
         
         [EnumMember(Value = "Service")]
         Service
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum CostingMethod
-    {
-        [EnumMember(Value = "FIFO")]
-        FIFO,
-        
-        [EnumMember(Value = "Special - Batch")]
-        Special_Batch,
-        
-        [EnumMember(Value = "Special - Serial Number")]
-        Special_SerialNumber,
-        
-        [EnumMember(Value = "FIFO - Serial Number")]
-        FIFO_SerialNumber,
-        
-        [EnumMember(Value = "FIFO - Batch")]
-        FIFO_Batch,
-
-        [EnumMember(Value = "FEFO - Batch")]
-        FEFO_Batch,
-
-        [EnumMember(Value = "FEFO - Serial Number")]
-        FEFO_SerialNumber
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum DropShipMode
-    {
-        [EnumMember(Value = "No Drop Ship")]
-        NoDropShip,
-
-        [EnumMember(Value = "Optional Drop Ship")]
-        OptionalDropShip,
-
-        [EnumMember(Value = "Always Drop Ship")]
-        AlwaysDropShip
     }
 }
