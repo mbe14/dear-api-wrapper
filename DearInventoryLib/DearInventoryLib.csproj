@@ -89,7 +89,9 @@
     <Compile Include="Api\MeRequest.cs" />
     <Compile Include="Api\RequestBase.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Model\Purchase\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
