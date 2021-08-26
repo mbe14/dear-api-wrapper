@@ -19,7 +19,7 @@ jobs:
           working_directory: ~/dear-api-wrapper/DearInventoryLib
           name: Run tests
           command: |
-            dotnet test
+            dotnet build
             
 
 workflows:
