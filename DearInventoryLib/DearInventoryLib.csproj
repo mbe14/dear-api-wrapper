@@ -56,25 +56,48 @@
     <Compile Include="Api\BankAccountsRequest.cs" />
     <Compile Include="Api\AccountRequest.cs" />
     <Compile Include="Api\ProductRequest.cs" />
+    <Compile Include="Api\PurchaseRequest.cs" />
     <Compile Include="Api\TaxRequest.cs" />
     <Compile Include="Interface\IAttributeSetRequest.cs" />
     <Compile Include="Interface\IBankAccountsRequest.cs" />
     <Compile Include="Interface\IAccountRequest.cs" />
     <Compile Include="Interface\IMeRequest.cs" />
     <Compile Include="Interface\IProductRequest.cs" />
+    <Compile Include="Interface\IPurchaseRequest.cs" />
     <Compile Include="Interface\ITaxRequest.cs" />
     <Compile Include="Model\Account\Account.cs" />
     <Compile Include="Model\AttributeSet.cs" />
     <Compile Include="Model\BankAccount.cs" />
+    <Compile Include="Model\Common\AdditionalAttribute.cs" />
     <Compile Include="Model\Common\Address.cs" />
+    <Compile Include="Model\Common\BaseLineModel.cs" />
+    <Compile Include="Model\Common\BaseStockLineModel.cs" />
+    <Compile Include="Model\Common\CombinedInvoiceStatus.cs" />
+    <Compile Include="Model\Common\CombinedPutAwayStatus.cs" />
     <Compile Include="Model\Common\Contact.cs" />
     <Compile Include="Model\Common\CostingMethod.cs" />
+    <Compile Include="Model\Common\DocumentStatus.cs" />
     <Compile Include="Model\Common\DropShipMode.cs" />
+    <Compile Include="Model\Common\PaymentStatus.cs" />
+    <Compile Include="Model\Other\InventoryMovementLineModel.cs" />
+    <Compile Include="Model\Other\PurchaseAdditionalChargeModel.cs" />
+    <Compile Include="Model\Other\PurchaseCreditNoteModel.cs" />
+    <Compile Include="Model\Other\PurchaseInvoiceModel.cs" />
+    <Compile Include="Model\Other\DocumentLineModel.cs" />
+    <Compile Include="Model\Other\PurchaseManualJournalLineModel.cs" />
+    <Compile Include="Model\Other\PurchaseManualJournalModel.cs" />
+    <Compile Include="Model\Other\PurchaseOrderModel.cs" />
+    <Compile Include="Model\Common\PurchaseStatus.cs" />
     <Compile Include="Model\Common\Status.cs" />
     <Compile Include="Model\Account\Customer.cs" />
+    <Compile Include="Model\Common\TypeOfPurchase.cs" />
     <Compile Include="Model\Me.cs" />
     <Compile Include="Model\Other\Attachment.cs" />
     <Compile Include="Model\Other\AttachmentLineModel.cs" />
+    <Compile Include="Model\Other\PurchaseStockLineModel.cs" />
+    <Compile Include="Model\Other\PurchaseStockModel.cs" />
+    <Compile Include="Model\Other\PurchaseUnstockLineModel.cs" />
+    <Compile Include="Model\Other\SalePaymentLineModel.cs" />
     <Compile Include="Model\Other\TaxComponent.cs" />
     <Compile Include="Model\Product\Product.cs" />
     <Compile Include="Model\Product\ProductAttachment.cs" />
@@ -83,15 +106,15 @@
     <Compile Include="Model\Product\ProductCategory.cs" />
     <Compile Include="Model\Product\ProductFamily.cs" />
     <Compile Include="Model\Account\Supplier.cs" />
+    <Compile Include="Model\Purchase\SimplePurchase.cs" />
+    <Compile Include="Model\Purchase\PurchasesList.cs" />
     <Compile Include="Model\Tax.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Api\AttributeSetRequest.cs" />
     <Compile Include="Api\MeRequest.cs" />
     <Compile Include="Api\RequestBase.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\Purchase\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

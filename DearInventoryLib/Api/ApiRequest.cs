@@ -24,5 +24,6 @@ namespace DearInventoryLib.Api
         public ProductRequest Product { get { return new ProductRequest(_httpClient, _accountId, _applicationKey); } }
         public TaxRequest Tax { get { return new TaxRequest(_httpClient, _accountId, _applicationKey); } }
         public AccountRequest Account { get { return new AccountRequest(_httpClient, _accountId, _applicationKey); } }
+        public PurchaseRequest Purchase { get { return new PurchaseRequest(_httpClient, _accountId, _applicationKey); } }
     }
 }
