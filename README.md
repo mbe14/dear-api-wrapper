@@ -1,6 +1,6 @@
 # dear-api-wrapper
 C# wrapper for DEAR API V2
-
+![example workflow](https://github.com/mbe14/dear-api-wrapper/actions/workflows/main.yml/badge.svg)
 ## Installation
 Download the `DearInventoryLib` library and add a reference into your C# project.
 
