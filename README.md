@@ -1,4 +1,5 @@
 # dear-api-wrapper
+![example workflow](https://github.com/mbe14/dear-api-wrapper/actions/workflows/dotnet-desktop.yml/badge.svg)  
 C# wrapper for DEAR API V2
 
 ## Installation
