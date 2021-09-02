@@ -1,4 +1,4 @@
-﻿namespace DearInventoryLib.Model.Other
+﻿namespace DearInventoryLib.Model.Purchase.Common
 {
     public class PurchaseAdditionalChargeModel
     {

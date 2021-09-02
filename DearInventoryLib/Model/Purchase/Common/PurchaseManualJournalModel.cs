@@ -1,7 +1,7 @@
 ﻿using DearInventoryLib.Model.Common;
 using System.Collections.Generic;
 
-namespace DearInventoryLib.Model.Other
+namespace DearInventoryLib.Model.Purchase.Common
 {
     public class PurchaseManualJournalModel
     {

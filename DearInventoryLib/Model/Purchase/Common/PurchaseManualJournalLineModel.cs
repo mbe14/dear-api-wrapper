@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DearInventoryLib.Model.Other
+namespace DearInventoryLib.Model.Purchase.Common
 {
     public class PurchaseManualJournalLineModel
     {

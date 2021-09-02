@@ -1,7 +1,7 @@
 ﻿using DearInventoryLib.Model.Common;
 using System;
 
-namespace DearInventoryLib.Model.Other
+namespace DearInventoryLib.Model.Purchase.Common
 {
     public class PurchaseStockLineModel : BaseStockLineModel
     {       
