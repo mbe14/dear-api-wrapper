@@ -1,6 +1,6 @@
 # dear-api-wrapper
 [![.NET Core Desktop](https://github.com/mbe14/dear-api-wrapper/actions/workflows/dotnet-desktop.yml/badge.svg?branch=main)](https://github.com/mbe14/dear-api-wrapper/actions/workflows/dotnet-desktop.yml)  
-C# wrapper for DEAR API V2
+C# class library for DEAR API V2 built on .NET Framework 4.8
 
 ## Installation
 Download the `DearInventoryLib` library and add a reference into your C# project.
