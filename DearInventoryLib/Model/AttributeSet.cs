@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DearInventoryLib.Model
 {
@@ -56,5 +53,5 @@ namespace DearInventoryLib.Model
         public string Attribute10Type { get; set; }
         public string Attribute10Values { get; set; }
         public Attribute[] Attributes { get; set; }
-    }    
+    }
 }

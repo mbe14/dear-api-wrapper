@@ -33,6 +33,6 @@ namespace Test.DearInventoryLib
                 exc = ex;
             }
             Assert.IsTrue(exc == null);
-        }       
+        }
     }
 }

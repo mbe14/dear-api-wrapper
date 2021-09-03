@@ -73,7 +73,7 @@ namespace Test.DearInventoryLib
         {
             AttributeSetList newAttribute = new AttributeSetList()
             {
-                Name = "Test set 12",
+                Name = "Test set 14",
                 Attribute1Name = "List attribute name",
                 Attribute1Type = "List",
                 Attribute1Values = "Red, Black, Blue, Aqua",
@@ -102,8 +102,8 @@ namespace Test.DearInventoryLib
             AttributeSetList newAttribute = new AttributeSetList()
             {
                 //ID is mandatory
-                ID = Guid.Parse("da13e59b-3837-4282-80c1-eb3102294757"),
-                Name = "Test set 25",
+                ID = Guid.Parse("6bc753b8-caf6-48e7-aa69-c5b1f42e01b6"),
+                Name = "Test set 28",
                 Attribute1Name = "List attribute name",
                 Attribute1Type = "List",
                 Attribute1Values = "Red, Black, Blue, Aqua",
@@ -129,7 +129,7 @@ namespace Test.DearInventoryLib
         [TestMethod]
         public void Delete()
         {
-            string id = "da13e59b-3837-4282-80c1-eb3102294757";
+            string id = "6bc753b8-caf6-48e7-aa69-c5b1f42e01b6";
             Exception exc = null;
             try
             {

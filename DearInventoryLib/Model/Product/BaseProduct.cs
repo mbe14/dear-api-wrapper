@@ -1,8 +1,5 @@
 ﻿using DearInventoryLib.Model.Common;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System;
-using System.Runtime.Serialization;
 
 namespace DearInventoryLib.Model.Product
 {

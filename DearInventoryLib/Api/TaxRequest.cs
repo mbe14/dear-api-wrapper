@@ -5,8 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DearInventoryLib.Api
 {
@@ -30,7 +28,7 @@ namespace DearInventoryLib.Api
                 s += IsActive ? "&IsActive=true" : "";
                 s += IsTaxForSale ? "&IsTaxForSale=true" : "";
                 s += IsTaxForPurchase ? "&IsTaxForPurchase=true" : "";
- 
+
 
                 using (HttpResponseMessage response = _httpClient.GetAsync(s).GetAwaiter().GetResult())
                 {

@@ -27,7 +27,7 @@ namespace DearInventoryLib.Api
             int page = 1;
             bool moveToNextPage;
             int defaultPageSize = 100;
-            
+
             do
             {
                 string s = $"product?Page={page}&Limit={defaultPageSize}";
@@ -116,11 +116,11 @@ namespace DearInventoryLib.Api
                         throw new Exception(responseData);
                     }
                     else
-                    {                       
+                    {
                         ProductList p = JsonConvert.DeserializeObject<ProductList>(responseData);
                         var productAdded = p.Products.FirstOrDefault();
                         result = productAdded.ID.ToString();
-                    }                   
+                    }
                 }
             }
             return result;
@@ -147,7 +147,7 @@ namespace DearInventoryLib.Api
                     {
                         ProductList p = JsonConvert.DeserializeObject<ProductList>(responseData);
                         result = response.StatusCode == System.Net.HttpStatusCode.OK ? true : false;
-                    }                  
+                    }
                 }
             }
             return result;
@@ -238,7 +238,7 @@ namespace DearInventoryLib.Api
             {
                 string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
                 var data = JsonConvert.DeserializeObject<ProductAvailability>(responseData);
-                result = data.ProductAvailabilityList.FirstOrDefault();                
+                result = data.ProductAvailabilityList.FirstOrDefault();
             }
             return result;
         }
@@ -345,7 +345,7 @@ namespace DearInventoryLib.Api
             int defaultPageSize = 100;
             do
             {
-                string s = $"ref/category?Page={page}&Limit={defaultPageSize}";                
+                string s = $"ref/category?Page={page}&Limit={defaultPageSize}";
                 using (HttpResponseMessage response = _httpClient.GetAsync(s).GetAwaiter().GetResult())
                 {
                     string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
@@ -381,7 +381,7 @@ namespace DearInventoryLib.Api
                     }
                     else
                     {
-                        ProductCategory p = JsonConvert.DeserializeObject<ProductCategory>(responseData);                        
+                        ProductCategory p = JsonConvert.DeserializeObject<ProductCategory>(responseData);
                         result = p.ID.ToString();
                     }
                 }

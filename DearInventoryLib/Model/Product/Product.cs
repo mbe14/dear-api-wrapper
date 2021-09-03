@@ -4,10 +4,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DearInventoryLib.Model.Product
 {
@@ -94,7 +91,7 @@ namespace DearInventoryLib.Model.Product
         public decimal Length { get; set; }
         public decimal Width { get; set; }
         public decimal Height { get; set; }
-        public decimal Weight { get; set; }       
+        public decimal Weight { get; set; }
         public string WeightUnits { get; set; }
         public object DimensionsUnits { get; set; }
         public string Barcode { get; set; }
@@ -112,7 +109,7 @@ namespace DearInventoryLib.Model.Product
         public string AdditionalAttribute9 { get; set; }
         public string AdditionalAttribute10 { get; set; }
         public Status Status { get; set; }
-        public string StockLocator { get; set; }       
+        public string StockLocator { get; set; }
         public bool Sellable { get; set; }
         public string PickZones { get; set; }
         public bool BillOfMaterial { get; set; }
@@ -156,7 +153,7 @@ namespace DearInventoryLib.Model.Product
     {
         [EnumMember(Value = "Stock")]
         Stock,
-        
+
         [EnumMember(Value = "Service")]
         Service
     }

@@ -10,6 +10,7 @@ namespace DearInventoryLib.Api
 {
     public class BankAccountsRequest : RequestBase, IBankAccountsRequest
     {
+        private const string URLAttribute = "ref/account/bank";
         public BankAccountsRequest(HttpClient HttpClient, string AccountId, string ApplicationKey) : base(HttpClient, AccountId, ApplicationKey)
         {
 
@@ -19,19 +20,18 @@ namespace DearInventoryLib.Api
         {
             List<BankAccount> result = new List<BankAccount>();
             int page = 1;
-            bool moveToNextPage;
+            bool moveToNextPage = true;
             int defaultPageSize = 100;
             do
             {
-                using (var response = _httpClient.GetAsync($"ref/account/bank?Page={page}&Limit={defaultPageSize}").GetAwaiter().GetResult())
+                URLParameter = $"{URLAttribute}?Page={page}&Limit={defaultPageSize}";
+                if (SendHttpRequest(HTTPMethod.GET, out string httpResponse) == System.Net.HttpStatusCode.OK)
                 {
-                    string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    var data = JsonConvert.DeserializeObject<BankAccountsList>(responseData);
+                    var data = JsonConvert.DeserializeObject<BankAccountsList>(httpResponse);
                     if (data.BankAccounts.Count() > 0)
                     {
                         result.AddRange(data.BankAccounts);
                         page++;
-                        moveToNextPage = true;
                     }
                     else
                     {
@@ -45,40 +45,22 @@ namespace DearInventoryLib.Api
 
         public BankAccount GetById(Guid Guid)
         {
-            string id = Guid.ToString();
-            BankAccount result = null;
-            using (var response = _httpClient.GetAsync($"ref/account/bank?ID={id}").GetAwaiter().GetResult())
-            {
-                string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                var data = JsonConvert.DeserializeObject<BankAccount>(responseData);
-                result = data;
-            }
+            string filter = Guid.ToString();
+            BankAccount result = JsonConvert.DeserializeObject<BankAccount>(RetrieveDataByField(Field.ID, filter, URLAttribute));
             return result;
         }
 
         public BankAccount GetByAccountName(string Name)
         {
-            string s = Name;
-            BankAccount result = null;
-            using (var response = _httpClient.GetAsync($"ref/account/bank?Name={s}").GetAwaiter().GetResult())
-            {
-                string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                var data = JsonConvert.DeserializeObject<BankAccount>(responseData);
-                result = data;
-            }
+            string filter = Name;
+            BankAccount result = JsonConvert.DeserializeObject<BankAccount>(RetrieveDataByField(Field.AccountName, filter, URLAttribute));
             return result;
         }
 
         public BankAccount GetByBank(string Bank)
         {
-            string s = Bank;
-            BankAccount result = null;
-            using (var response = _httpClient.GetAsync($"ref/account/bank?Bank={s}").GetAwaiter().GetResult())
-            {
-                string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                var data = JsonConvert.DeserializeObject<BankAccount>(responseData);
-                result = data;
-            }
+            string filter = Bank;
+            BankAccount result = JsonConvert.DeserializeObject<BankAccount>(RetrieveDataByField(Field.Bank, filter, URLAttribute));
             return result;
         }
     }

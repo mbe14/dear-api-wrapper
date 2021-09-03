@@ -1,9 +1,4 @@
-﻿using DearInventoryLib.Model.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DearInventoryLib.Model.Account
 {
@@ -16,7 +11,7 @@ namespace DearInventoryLib.Model.Account
         public string RevenueAccount { get; set; }
         public string PriceTier { get; set; }
         public string Tags { get; set; }
-        public int CreditLimit { get; set; }        
+        public int CreditLimit { get; set; }
     }
 
     public class CustomersList

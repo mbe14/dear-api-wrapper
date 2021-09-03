@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DearInventoryLib.Model.Other
+﻿namespace DearInventoryLib.Model.Other
 {
     public class TaxComponent
     {
@@ -12,6 +6,6 @@ namespace DearInventoryLib.Model.Other
         public decimal Percent { get; set; }
         public string AccountCode { get; set; }
         public int ComponentOrder { get; set; }
-        
+
     }
 }

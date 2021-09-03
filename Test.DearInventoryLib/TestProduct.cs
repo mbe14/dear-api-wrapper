@@ -1,6 +1,5 @@
 ﻿using DearInventoryLib.Api;
 using DearInventoryLib.Model.Common;
-using DearInventoryLib.Model.Product;
 using DearInventoryLib.Model.ProductAttachment;
 using DearInventoryLib.Model.ProductCategory;
 using DearInventoryLib.Model.ProductFamily;
@@ -346,7 +345,7 @@ namespace Test.DearInventoryLib
         [TestMethod]
         public void DeleteProductCategory()
         {
-           //Add test
+            //Add test
         }
 
     }
