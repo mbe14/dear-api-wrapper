@@ -10,6 +10,7 @@ namespace DearInventoryLib.Api
 {
     public class TaxRequest : RequestBase, ITaxRequest
     {
+        private const string URLAttribute = "ref/tax";
         public TaxRequest(HttpClient HttpClient, string AccountId, string ApplicationKey) : base(HttpClient, AccountId, ApplicationKey)
         {
 
@@ -19,26 +20,23 @@ namespace DearInventoryLib.Api
         {
             List<Tax> result = new List<Tax>();
             int page = 1;
-            bool moveToNextPage;
+            bool moveToNextPage = true;
             int defaultPageSize = 100;
 
             do
             {
-                string s = $"ref/tax?Page={page}&Limit={defaultPageSize}";
-                s += IsActive ? "&IsActive=true" : "";
-                s += IsTaxForSale ? "&IsTaxForSale=true" : "";
-                s += IsTaxForPurchase ? "&IsTaxForPurchase=true" : "";
+                URLParameter = $"{URLAttribute}?Page={page}&Limit={defaultPageSize}";
+                URLParameter += IsActive ? "&IsActive=true" : "";
+                URLParameter += IsTaxForSale ? "&IsTaxForSale=true" : "";
+                URLParameter += IsTaxForPurchase ? "&IsTaxForPurchase=true" : "";
 
-
-                using (HttpResponseMessage response = _httpClient.GetAsync(s).GetAwaiter().GetResult())
+                if (SendHttpRequest(HTTPMethod.GET, out string httpResponse) == System.Net.HttpStatusCode.OK)
                 {
-                    string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    var data = JsonConvert.DeserializeObject<TaxList>(responseData);
+                    var data = JsonConvert.DeserializeObject<TaxList>(httpResponse);
                     if (data.TaxRuleList.Count() > 0)
                     {
                         result.AddRange(data.TaxRuleList);
                         page++;
-                        moveToNextPage = true;
                     }
                     else
                     {
@@ -53,11 +51,10 @@ namespace DearInventoryLib.Api
         public List<Tax> GetTaxForAccount(string Account)
         {
             List<Tax> result = new List<Tax>();
-            string s = $"ref/tax?Account={Account}";
-            using (HttpResponseMessage response = _httpClient.GetAsync(s).GetAwaiter().GetResult())
+            URLParameter = $"{URLAttribute}?Account={Account}";
+            if (SendHttpRequest(HTTPMethod.GET, out string httpResponse) == System.Net.HttpStatusCode.OK)
             {
-                string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                var data = JsonConvert.DeserializeObject<TaxList>(responseData);
+                var data = JsonConvert.DeserializeObject<TaxList>(httpResponse);
                 result = data.TaxRuleList;
             }
             return result;
@@ -66,52 +63,27 @@ namespace DearInventoryLib.Api
         public string AddTax(Tax Tax)
         {
             string result = string.Empty;
-            var data = JsonConvert.SerializeObject(Tax);
-            using (var content = new StringContent(data, System.Text.Encoding.Default, "application/json"))
+            URLParameter = $"{URLAttribute}";
+            if (SendHttpRequest(HTTPMethod.POST, out string httpResponse, content: Tax) == System.Net.HttpStatusCode.OK)
             {
-                using (HttpResponseMessage response = _httpClient.PostAsync("ref/tax", content).GetAwaiter().GetResult())
-                {
-                    string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        throw new Exception(responseData);
-                    }
-                    else
-                    {
-                        TaxList t = JsonConvert.DeserializeObject<TaxList>(responseData);
-                        var tax = t.TaxRuleList.FirstOrDefault();
-                        result = tax.ID.ToString();
-                    }
-                }
+                TaxList t = JsonConvert.DeserializeObject<TaxList>(httpResponse);
+                var tax = t.TaxRuleList.FirstOrDefault();
+                result = tax.ID.ToString();
             }
             return result;
         }
 
         public bool EditTax(Tax Tax)
         {
-            bool result;
-            if (Tax.ID == Guid.Empty || Tax.ID == null)
+            URLParameter = URLAttribute;
+            if (SendHttpRequest(HTTPMethod.PUT, out _, content: Tax) == System.Net.HttpStatusCode.OK)
             {
-                throw new ArgumentNullException("Tax ID not declared.");
+                return true;
             }
-            var data = JsonConvert.SerializeObject(Tax);
-            using (var content = new StringContent(data, System.Text.Encoding.Default, "application/json"))
+            else
             {
-                using (HttpResponseMessage response = _httpClient.PutAsync("ref/tax", content).GetAwaiter().GetResult())
-                {
-                    string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        throw new Exception(responseData);
-                    }
-                    else
-                    {
-                        TaxList t = JsonConvert.DeserializeObject<TaxList>(responseData);
-                        result = response.StatusCode == System.Net.HttpStatusCode.OK ? true : false;
-                    }
-                }
+                return false;
             }
-            return result;
         }
     }
 }

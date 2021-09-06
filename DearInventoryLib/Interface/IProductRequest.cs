@@ -16,7 +16,7 @@ namespace DearInventoryLib.Interface
         string AddProduct(Product Product);
         bool EditProduct(Product Product);
         List<AttachmentLineModel> GetProductAttachmentsByProductID(Guid ProductId);
-        List<AttachmentLineModel> DeleteProductAttachment(Guid AttachmentId);
+        bool DeleteProductAttachment(Guid AttachmentId);
         List<ProductAvailabilityList> GetProductsAvailability();
         ProductAvailabilityList GetProductAvailabilityBySKU(string Sku);
         ProductAvailabilityList GetProductAvailabilityByProductID(Guid ProductId);

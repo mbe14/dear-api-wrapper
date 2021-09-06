@@ -16,6 +16,11 @@ namespace DearInventoryLib.Api
 {
     public class ProductRequest : RequestBase, IProductRequest
     {
+        private const string URLAttribute = "product";
+        private const string URLAttributeAttachments = "product/attachments";
+        private const string URLAttributeAvailability = "ref/productavailability";
+        private const string URLAttributeProductFamily = "productFamily";
+        private const string URLAttributeProductCategories = "ref/category";
         public ProductRequest(HttpClient HttpClient, string AccountId, string ApplicationKey) : base(HttpClient, AccountId, ApplicationKey)
         {
 
@@ -25,28 +30,26 @@ namespace DearInventoryLib.Api
         {
             List<Product> result = new List<Product>();
             int page = 1;
-            bool moveToNextPage;
+            bool moveToNextPage = true;
             int defaultPageSize = 100;
 
             do
             {
-                string s = $"product?Page={page}&Limit={defaultPageSize}";
-                s += IncludeDeprecated ? "&IncludeDeprecated=true" : "";
-                s += IncludeBOM ? "&IncludeBOM=true" : "";
-                s += IncludeSuppliers ? "&IncludeSuppliers=true" : "";
-                s += IncludeMovements ? "&IncludeMovements=true" : "";
-                s += IncludeAttachments ? "&IncludeAttachments=true" : "";
-                s += IncludeReorderLevels ? "&IncludeReorderLevels=true" : "";
+                URLParameter = $"{URLAttribute}?Page={page}&Limit={defaultPageSize}";
+                URLParameter += IncludeDeprecated ? "&IncludeDeprecated=true" : "";
+                URLParameter += IncludeBOM ? "&IncludeBOM=true" : "";
+                URLParameter += IncludeSuppliers ? "&IncludeSuppliers=true" : "";
+                URLParameter += IncludeMovements ? "&IncludeMovements=true" : "";
+                URLParameter += IncludeAttachments ? "&IncludeAttachments=true" : "";
+                URLParameter += IncludeReorderLevels ? "&IncludeReorderLevels=true" : "";
 
-                using (HttpResponseMessage response = _httpClient.GetAsync(s).GetAwaiter().GetResult())
+                if (SendHttpRequest(HTTPMethod.GET, out string httpResponse) == System.Net.HttpStatusCode.OK)
                 {
-                    string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    var data = JsonConvert.DeserializeObject<ProductList>(responseData);
+                    var data = JsonConvert.DeserializeObject<ProductList>(httpResponse);
                     if (data.Products.Count() > 0)
                     {
                         result.AddRange(data.Products);
                         page++;
-                        moveToNextPage = true;
                     }
                     else
                     {
@@ -63,18 +66,17 @@ namespace DearInventoryLib.Api
             string id = Guid.ToString();
             Product result = null;
 
-            string s = $"product?ID={id}";
-            s += IncludeDeprecated ? "&IncludeDeprecated=true" : "";
-            s += IncludeBOM ? "&IncludeBOM=true" : "";
-            s += IncludeSuppliers ? "&IncludeSuppliers=true" : "";
-            s += IncludeMovements ? "&IncludeMovements=true" : "";
-            s += IncludeAttachments ? "&IncludeAttachments=true" : "";
-            s += IncludeReorderLevels ? "&IncludeReorderLevels=true" : "";
+            URLParameter = $"product?ID={id}";
+            URLParameter += IncludeDeprecated ? "&IncludeDeprecated=true" : "";
+            URLParameter += IncludeBOM ? "&IncludeBOM=true" : "";
+            URLParameter += IncludeSuppliers ? "&IncludeSuppliers=true" : "";
+            URLParameter += IncludeMovements ? "&IncludeMovements=true" : "";
+            URLParameter += IncludeAttachments ? "&IncludeAttachments=true" : "";
+            URLParameter += IncludeReorderLevels ? "&IncludeReorderLevels=true" : "";
 
-            using (HttpResponseMessage response = _httpClient.GetAsync(s).GetAwaiter().GetResult())
+            if (SendHttpRequest(HTTPMethod.GET, out string httpResponse) == System.Net.HttpStatusCode.OK)
             {
-                string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                var data = JsonConvert.DeserializeObject<ProductList>(responseData);
+                var data = JsonConvert.DeserializeObject<ProductList>(httpResponse);
                 result = data.Products.FirstOrDefault();
             }
             return result;
@@ -85,18 +87,17 @@ namespace DearInventoryLib.Api
             string _sku = Sku;
             Product result = null;
 
-            string s = $"product?SKU={_sku}";
-            s += IncludeDeprecated ? "&IncludeDeprecated=true" : "";
-            s += IncludeBOM ? "&IncludeBOM=true" : "";
-            s += IncludeSuppliers ? "&IncludeSuppliers=true" : "";
-            s += IncludeMovements ? "&IncludeMovements=true" : "";
-            s += IncludeAttachments ? "&IncludeAttachments=true" : "";
-            s += IncludeReorderLevels ? "&IncludeReorderLevels=true" : "";
+            URLParameter = $"product?SKU={_sku}";
+            URLParameter += IncludeDeprecated ? "&IncludeDeprecated=true" : "";
+            URLParameter += IncludeBOM ? "&IncludeBOM=true" : "";
+            URLParameter += IncludeSuppliers ? "&IncludeSuppliers=true" : "";
+            URLParameter += IncludeMovements ? "&IncludeMovements=true" : "";
+            URLParameter += IncludeAttachments ? "&IncludeAttachments=true" : "";
+            URLParameter += IncludeReorderLevels ? "&IncludeReorderLevels=true" : "";
 
-            using (HttpResponseMessage response = _httpClient.GetAsync(s).GetAwaiter().GetResult())
+            if (SendHttpRequest(HTTPMethod.GET, out string httpResponse) == System.Net.HttpStatusCode.OK)
             {
-                string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                var data = JsonConvert.DeserializeObject<ProductList>(responseData);
+                var data = JsonConvert.DeserializeObject<ProductList>(httpResponse);
                 result = data.Products.FirstOrDefault();
             }
             return result;
@@ -105,63 +106,38 @@ namespace DearInventoryLib.Api
         public string AddProduct(Product Product)
         {
             string result = string.Empty;
-            var data = JsonConvert.SerializeObject(Product);
-            using (var content = new StringContent(data, System.Text.Encoding.Default, "application/json"))
+            URLParameter = URLAttribute;
+            if (SendHttpRequest(HTTPMethod.POST, out string httpResponse, content: Product) == System.Net.HttpStatusCode.OK)
             {
-                using (HttpResponseMessage response = _httpClient.PostAsync("product", content).GetAwaiter().GetResult())
-                {
-                    string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        throw new Exception(responseData);
-                    }
-                    else
-                    {
-                        ProductList p = JsonConvert.DeserializeObject<ProductList>(responseData);
-                        var productAdded = p.Products.FirstOrDefault();
-                        result = productAdded.ID.ToString();
-                    }
-                }
+                var data = JsonConvert.DeserializeObject<ProductList>(httpResponse);
+                var productAdded = data.Products.FirstOrDefault();
+                result = productAdded.ID.ToString();
             }
             return result;
         }
 
         public bool EditProduct(Product Product)
         {
-            bool result;
-            if (Product.ID == Guid.Empty || Product.ID == null)
+            URLParameter = URLAttribute;
+            if (SendHttpRequest(HTTPMethod.PUT, out _, content: Product) == System.Net.HttpStatusCode.OK)
             {
-                throw new ArgumentNullException("Product ID not declared.");
+                return true;
             }
-            var data = JsonConvert.SerializeObject(Product);
-            using (var content = new StringContent(data, System.Text.Encoding.Default, "application/json"))
+            else
             {
-                using (HttpResponseMessage response = _httpClient.PutAsync("product", content).GetAwaiter().GetResult())
-                {
-                    string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        throw new Exception(responseData);
-                    }
-                    else
-                    {
-                        ProductList p = JsonConvert.DeserializeObject<ProductList>(responseData);
-                        result = response.StatusCode == System.Net.HttpStatusCode.OK ? true : false;
-                    }
-                }
+                return false;
             }
-            return result;
         }
 
         public List<AttachmentLineModel> GetProductAttachmentsByProductID(Guid ProductId)
         {
-            string _productId = ProductId.ToString();
             List<AttachmentLineModel> result = new List<AttachmentLineModel>();
-            string s = $"product/attachments?ProductID={_productId}";
-            using (HttpResponseMessage response = _httpClient.GetAsync(s).GetAwaiter().GetResult())
+            string _productId = ProductId.ToString();
+            URLParameter = $"{URLAttributeAttachments}?ProductID={_productId}";
+            if (SendHttpRequest(HTTPMethod.GET, out string httpResponse) == System.Net.HttpStatusCode.OK)
             {
-                string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                result = JsonConvert.DeserializeObject<List<AttachmentLineModel>>(responseData);
+                var data = JsonConvert.DeserializeObject<List<AttachmentLineModel>>(httpResponse);
+                result = data;
             }
             return result;
         }
@@ -169,56 +145,45 @@ namespace DearInventoryLib.Api
         public List<AttachmentLineModel> AddProductAttachment(ProductAttachment ProductAttachment)
         {
             List<AttachmentLineModel> result = new List<AttachmentLineModel>();
-            if (ProductAttachment.ProductID == Guid.Empty || ProductAttachment.ProductID == null)
+            URLParameter = $"{URLAttributeAttachments}";
+            if (SendHttpRequest(HTTPMethod.POST, out string httpResponse, content: ProductAttachment) == System.Net.HttpStatusCode.OK)
             {
-                throw new ArgumentNullException("Product ID not declared.");
-            }
-            var data = JsonConvert.SerializeObject(ProductAttachment);
-            using (var content = new StringContent(data, System.Text.Encoding.Default, "application/json"))
-            {
-                using (HttpResponseMessage response = _httpClient.PostAsync("product/attachments", content).GetAwaiter().GetResult())
-                {
-                    string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    result = JsonConvert.DeserializeObject<List<AttachmentLineModel>>(responseData);
-                }
+                var data = JsonConvert.DeserializeObject<List<AttachmentLineModel>>(httpResponse);               
+                result = data;
             }
             return result;
         }
 
-        public List<AttachmentLineModel> DeleteProductAttachment(Guid AttachmentId)
+        public bool DeleteProductAttachment(Guid AttachmentId)
         {
-            List<AttachmentLineModel> result = new List<AttachmentLineModel>();
-            if (AttachmentId == Guid.Empty || AttachmentId == null)
-            {
-                throw new ArgumentNullException("Attachment ID not declared.");
-            }
             string id = AttachmentId.ToString();
-            using (HttpResponseMessage response = _httpClient.DeleteAsync($"product/attachments?ID={id}").GetAwaiter().GetResult())
+            URLParameter = $"{URLAttributeAttachments}?ID={id}";
+            if (SendHttpRequest(HTTPMethod.DELETE, out _) == System.Net.HttpStatusCode.OK)
             {
-                string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                result = JsonConvert.DeserializeObject<List<AttachmentLineModel>>(responseData);
+                return true;
             }
-            return result;
+            else
+            {
+                return false;
+            }
         }
 
         public List<ProductAvailabilityList> GetProductsAvailability()
         {
             List<ProductAvailabilityList> result = new List<ProductAvailabilityList>();
             int page = 1;
-            bool moveToNextPage;
+            bool moveToNextPage = true;
             int defaultPageSize = 100;
             do
             {
-                string s = $"ref/productavailability?Page={page}&Limit={defaultPageSize}";
-                using (HttpResponseMessage response = _httpClient.GetAsync(s).GetAwaiter().GetResult())
+                URLParameter = $"{URLAttributeAvailability}?Page={page}&Limit={defaultPageSize}";
+                if (SendHttpRequest(HTTPMethod.GET, out string httpResponse) == System.Net.HttpStatusCode.OK)
                 {
-                    string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    var data = JsonConvert.DeserializeObject<ProductAvailability>(responseData);
+                    var data = JsonConvert.DeserializeObject<ProductAvailability>(httpResponse);
                     if (data.ProductAvailabilityList.Count() > 0)
                     {
                         result.AddRange(data.ProductAvailabilityList);
                         page++;
-                        moveToNextPage = true;
                     }
                     else
                     {
@@ -232,28 +197,15 @@ namespace DearInventoryLib.Api
 
         public ProductAvailabilityList GetProductAvailabilityBySKU(string Sku)
         {
-            ProductAvailabilityList result;
-            string s = $"ref/productavailability?Sku={Sku}";
-            using (HttpResponseMessage response = _httpClient.GetAsync(s).GetAwaiter().GetResult())
-            {
-                string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                var data = JsonConvert.DeserializeObject<ProductAvailability>(responseData);
-                result = data.ProductAvailabilityList.FirstOrDefault();
-            }
+            string filter = Sku;
+            ProductAvailabilityList result = JsonConvert.DeserializeObject<ProductAvailability>(RetrieveDataByField(Field.SKU, filter, URLAttributeAvailability)).ProductAvailabilityList.FirstOrDefault();
             return result;
         }
 
         public ProductAvailabilityList GetProductAvailabilityByProductID(Guid ProductId)
         {
-            ProductAvailabilityList result;
-            string id = ProductId.ToString();
-            string s = $"ref/productavailability?ID={id}";
-            using (HttpResponseMessage response = _httpClient.GetAsync(s).GetAwaiter().GetResult())
-            {
-                string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                var data = JsonConvert.DeserializeObject<ProductAvailability>(responseData);
-                result = data.ProductAvailabilityList.FirstOrDefault();
-            }
+            string filter = ProductId.ToString();
+            ProductAvailabilityList result = JsonConvert.DeserializeObject<ProductAvailability>(RetrieveDataByField(Field.ID, filter, URLAttributeAvailability)).ProductAvailabilityList.FirstOrDefault();
             return result;
         }
 
@@ -261,20 +213,18 @@ namespace DearInventoryLib.Api
         {
             List<ProductFamily> result = new List<ProductFamily>();
             int page = 1;
-            bool moveToNextPage;
+            bool moveToNextPage = true;
             int defaultPageSize = 100;
             do
             {
-                string s = $"productFamily?Page={page}&Limit={defaultPageSize}";
-                using (HttpResponseMessage response = _httpClient.GetAsync(s).GetAwaiter().GetResult())
+                URLParameter = $"{URLAttributeProductFamily}?Page={page}&Limit={defaultPageSize}";
+                if (SendHttpRequest(HTTPMethod.GET, out string httpResponse) == System.Net.HttpStatusCode.OK)
                 {
-                    string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    var data = JsonConvert.DeserializeObject<ProductFamilyList>(responseData);
+                    var data = JsonConvert.DeserializeObject<ProductFamilyList>(httpResponse);
                     if (data.ProductFamilies.Count() > 0)
                     {
                         result.AddRange(data.ProductFamilies);
                         page++;
-                        moveToNextPage = true;
                     }
                     else
                     {
@@ -288,73 +238,46 @@ namespace DearInventoryLib.Api
 
         public bool EditProductFamily(ProductFamily ProductFamily)
         {
-            bool result;
-            if (ProductFamily.ID == Guid.Empty || ProductFamily.ID == null)
+            URLParameter = URLAttributeProductFamily;
+            if (SendHttpRequest(HTTPMethod.PUT, out _, content: ProductFamily) == System.Net.HttpStatusCode.OK)
             {
-                throw new ArgumentNullException("ProductFamily ID not declared.");
+                return true;
             }
-            var data = JsonConvert.SerializeObject(ProductFamily);
-            using (var content = new StringContent(data, System.Text.Encoding.Default, "application/json"))
+            else
             {
-                using (HttpResponseMessage response = _httpClient.PutAsync("productFamily", content).GetAwaiter().GetResult())
-                {
-                    string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        throw new Exception(responseData);
-                    }
-                    else
-                    {
-                        ProductFamilyList p = JsonConvert.DeserializeObject<ProductFamilyList>(responseData);
-                        result = response.StatusCode == System.Net.HttpStatusCode.OK ? true : false;
-                    }
-                }
+                return false;
             }
-            return result;
         }
 
         public string AddProductFamily(ProductFamily ProductFamily)
         {
             string result = string.Empty;
-            var data = JsonConvert.SerializeObject(ProductFamily);
-            using (var content = new StringContent(data, System.Text.Encoding.Default, "application/json"))
+            URLParameter = $"{URLAttributeAttachments}";
+            if (SendHttpRequest(HTTPMethod.POST, out string httpResponse, content: ProductFamily) == System.Net.HttpStatusCode.OK)
             {
-                using (HttpResponseMessage response = _httpClient.PostAsync("productFamily", content).GetAwaiter().GetResult())
-                {
-                    string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        throw new Exception(responseData);
-                    }
-                    else
-                    {
-                        ProductFamilyList p = JsonConvert.DeserializeObject<ProductFamilyList>(responseData);
-                        var productFamilyAdded = p.ProductFamilies.FirstOrDefault();
-                        result = productFamilyAdded.ID.ToString();
-                    }
-                }
+                var data = JsonConvert.DeserializeObject<ProductFamilyList>(httpResponse);
+                var productFamilyAdded = data.ProductFamilies.FirstOrDefault();
+                result = productFamilyAdded.ID.ToString();
             }
-            return result;
+            return result;            
         }
 
         public List<ProductCategory> GetProductCategories()
         {
             List<ProductCategory> result = new List<ProductCategory>();
             int page = 1;
-            bool moveToNextPage;
+            bool moveToNextPage = true;
             int defaultPageSize = 100;
             do
             {
-                string s = $"ref/category?Page={page}&Limit={defaultPageSize}";
-                using (HttpResponseMessage response = _httpClient.GetAsync(s).GetAwaiter().GetResult())
+                URLParameter = $"{URLAttributeProductCategories}?Page={page}&Limit={defaultPageSize}";
+                if (SendHttpRequest(HTTPMethod.GET, out string httpResponse) == System.Net.HttpStatusCode.OK)
                 {
-                    string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    var data = JsonConvert.DeserializeObject<ProductCategoryList>(responseData);
+                    var data = JsonConvert.DeserializeObject<ProductCategoryList>(httpResponse);
                     if (data.CategoryList.Count() > 0)
                     {
                         result.AddRange(data.CategoryList);
                         page++;
-                        moveToNextPage = true;
                     }
                     else
                     {
@@ -369,63 +292,40 @@ namespace DearInventoryLib.Api
         public string AddProductCategory(ProductCategory ProductCategory)
         {
             string result = string.Empty;
-            var data = JsonConvert.SerializeObject(ProductCategory);
-            using (var content = new StringContent(data, System.Text.Encoding.Default, "application/json"))
+            URLParameter = $"{URLAttributeProductCategories}";
+            if (SendHttpRequest(HTTPMethod.POST, out string httpResponse, content: ProductCategory) == System.Net.HttpStatusCode.OK)
             {
-                using (HttpResponseMessage response = _httpClient.PostAsync("ref/category", content).GetAwaiter().GetResult())
-                {
-                    string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        throw new Exception(responseData);
-                    }
-                    else
-                    {
-                        ProductCategory p = JsonConvert.DeserializeObject<ProductCategory>(responseData);
-                        result = p.ID.ToString();
-                    }
-                }
+                ProductCategory p = JsonConvert.DeserializeObject<ProductCategory>(httpResponse);
+                result = p.ID.ToString();
             }
             return result;
         }
 
         public bool EditProductCategory(ProductCategory ProductCategory)
         {
-            bool result;
-            if (ProductCategory.ID == Guid.Empty || ProductCategory.ID == null)
+            URLParameter = URLAttributeProductCategories;
+            if (SendHttpRequest(HTTPMethod.PUT, out _, content: ProductCategory) == System.Net.HttpStatusCode.OK)
             {
-                throw new ArgumentNullException("ProductCategory ID not declared.");
+                return true;
             }
-            var data = JsonConvert.SerializeObject(ProductCategory);
-            using (var content = new StringContent(data, System.Text.Encoding.Default, "application/json"))
+            else
             {
-                using (HttpResponseMessage response = _httpClient.PutAsync("ref/category", content).GetAwaiter().GetResult())
-                {
-                    string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        throw new Exception(responseData);
-                    }
-                    else
-                    {
-                        ProductCategory p = JsonConvert.DeserializeObject<ProductCategory>(responseData);
-                        result = response.StatusCode == System.Net.HttpStatusCode.OK ? true : false;
-                    }
-                }
+                return false;
             }
-            return result;
         }
 
         public bool DeleteProductCategory(Guid Guid)
         {
             string id = Guid.ToString();
-            bool result;
-            using (var response = _httpClient.DeleteAsync($"ref/category?ID={id}").GetAwaiter().GetResult())
+            URLParameter = $"{URLAttributeProductCategories}?ID={id}";
+            if (SendHttpRequest(HTTPMethod.DELETE, out _) == System.Net.HttpStatusCode.OK)
             {
-                string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                result = response.StatusCode == System.Net.HttpStatusCode.OK ? true : false;
+                return true;
             }
-            return result;
+            else
+            {
+                return false;
+            }
         }
     }
 }

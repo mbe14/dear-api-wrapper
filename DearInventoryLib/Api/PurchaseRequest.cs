@@ -10,6 +10,7 @@ namespace DearInventoryLib.Api
 {
     public class PurchaseRequest : RequestBase, IPurchaseRequest
     {
+        private const string URLAttribute = "purchaseList";
         public PurchaseRequest(HttpClient HttpClient, string AccountId, string ApplicationKey) : base(HttpClient, AccountId, ApplicationKey)
         {
 
@@ -19,22 +20,20 @@ namespace DearInventoryLib.Api
         {
             List<PurchaseData> result = new List<PurchaseData>();
             int page = 1;
-            bool moveToNextPage;
+            bool moveToNextPage = true;
             int defaultPageSize = 100;
 
             do
             {
-                string s = $"purchaseList?Page={page}&Limit={defaultPageSize}";
-                s += !string.IsNullOrWhiteSpace(Search) ? $"&Search={Search}" : "";
-                using (HttpResponseMessage response = _httpClient.GetAsync(s).GetAwaiter().GetResult())
+                URLParameter = $"{URLAttribute}?Page={page}&Limit={defaultPageSize}";
+                URLParameter += !string.IsNullOrWhiteSpace(Search) ? $"&Search={Search}" : "";
+                if (SendHttpRequest(HTTPMethod.GET, out string httpResponse) == System.Net.HttpStatusCode.OK)
                 {
-                    string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    var data = JsonConvert.DeserializeObject<PurchasesList>(responseData);
+                    var data = JsonConvert.DeserializeObject<PurchasesList>(httpResponse);
                     if (data.PurchaseList.Count() > 0)
                     {
                         result.AddRange(data.PurchaseList);
                         page++;
-                        moveToNextPage = true;
                     }
                     else
                     {
@@ -48,17 +47,8 @@ namespace DearInventoryLib.Api
 
         public SimplePurchase GetSimplePurchase(Guid ID)
         {
-            string id = ID.ToString();
-            SimplePurchase result = null;
-
-            string s = $"purchase?ID={id}&CombineAdditionalCharges=true";
-
-            using (HttpResponseMessage response = _httpClient.GetAsync(s).GetAwaiter().GetResult())
-            {
-                string responseData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                var data = JsonConvert.DeserializeObject<SimplePurchase>(responseData);
-                result = data;
-            }
+            string filter = ID.ToString();
+            SimplePurchase result = JsonConvert.DeserializeObject<SimplePurchase>(RetrieveDataByField(Field.ID, filter, URLAttribute));
             return result;
         }
     }

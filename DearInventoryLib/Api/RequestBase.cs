@@ -56,8 +56,6 @@ namespace DearInventoryLib.Api
                     callTask = Task.Run(() => _httpClient.DeleteAsync(URLParameter));
                     httpResponseMessage = callTask.GetAwaiter().GetResult();
                     break;
-                default:
-                    break;
             }
             var responseTask = Task.Run(() => httpResponseMessage.Content.ReadAsStringAsync());
             response = responseTask.GetAwaiter().GetResult();
@@ -77,6 +75,9 @@ namespace DearInventoryLib.Api
                     break;
                 case Field.AccountName:
                     URLParameter = $"{URLAttribute}?Name={filter}";
+                    break;
+                case Field.SKU:
+                    URLParameter = $"{URLAttribute}?Sku={filter}";
                     break;
             }
             if (SendHttpRequest(HTTPMethod.GET, out string httpResponse) == System.Net.HttpStatusCode.OK)
@@ -112,7 +113,10 @@ namespace DearInventoryLib.Api
             Bank,
 
             [EnumMember(Value = "Name")]
-            AccountName
+            AccountName,
+
+            [EnumMember(Value = "Sku")]
+            SKU
         }
     }
 }
