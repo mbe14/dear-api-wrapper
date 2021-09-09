@@ -1,8 +1,9 @@
-﻿using System;
+﻿using DearInventoryLib.Model.Common;
+using System;
 
 namespace DearInventoryLib.Model.ProductAttachment
 {
-    public class ProductAttachment
+    public class ProductAttachment : AdditionalFields
     {
         public Guid ProductID { get; set; }
         public string FileName { get; set; }

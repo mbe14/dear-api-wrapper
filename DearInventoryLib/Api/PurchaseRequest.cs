@@ -11,6 +11,7 @@ namespace DearInventoryLib.Api
     public class PurchaseRequest : RequestBase, IPurchaseRequest
     {
         private const string URLAttribute = "purchaseList";
+        private const string URLAttributePurchaseOrder = "purchase/order";
         public PurchaseRequest(HttpClient HttpClient, string AccountId, string ApplicationKey) : base(HttpClient, AccountId, ApplicationKey)
         {
 
@@ -50,6 +51,16 @@ namespace DearInventoryLib.Api
             string filter = ID.ToString();
             SimplePurchase result = JsonConvert.DeserializeObject<SimplePurchase>(RetrieveDataByField(Field.ID, filter, URLAttribute));
             return result;
+        }
+
+        string IPurchaseRequest.AddPurchaseOrder(PurchaseOrder PurchaseOrder)
+        {
+            throw new NotImplementedException();
+        }
+
+        PurchaseOrder IPurchaseRequest.GetPurchaseOrder(Guid TaskID)
+        {
+            throw new NotImplementedException();
         }
     }
 }

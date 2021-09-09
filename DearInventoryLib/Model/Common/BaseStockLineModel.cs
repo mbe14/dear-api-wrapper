@@ -2,7 +2,7 @@
 
 namespace DearInventoryLib.Model.Common
 {
-    public class BaseStockLineModel
+    public class BaseStockLineModel : AdditionalFields
     {
         public Guid CardID { get; set; }
         public DateTime Date { get; set; }

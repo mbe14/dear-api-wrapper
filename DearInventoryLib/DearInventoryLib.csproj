@@ -72,6 +72,7 @@
     <Compile Include="Model\AttributeSet.cs" />
     <Compile Include="Model\BankAccount.cs" />
     <Compile Include="Model\Common\AdditionalAttribute.cs" />
+    <Compile Include="Model\Common\AdditionalFields.cs" />
     <Compile Include="Model\Common\Address.cs" />
     <Compile Include="Model\Common\BaseLineModel.cs" />
     <Compile Include="Model\Common\BaseStockLineModel.cs" />
@@ -83,6 +84,9 @@
     <Compile Include="Model\Common\DropShipMode.cs" />
     <Compile Include="Model\Common\PaymentStatus.cs" />
     <Compile Include="Model\Other\InventoryMovementLineModel.cs" />
+    <Compile Include="Model\Purchase\AdvancedPurchase.cs" />
+    <Compile Include="Model\Purchase\AdvancedPurchaseStockReceived.cs" />
+    <Compile Include="Model\Purchase\AEPurchase.cs" />
     <Compile Include="Model\Purchase\Common\PurchaseAdditionalChargeModel.cs" />
     <Compile Include="Model\Purchase\Common\PurchaseCreditNoteModel.cs" />
     <Compile Include="Model\Purchase\Common\PurchaseInvoiceModel.cs" />
@@ -109,7 +113,13 @@
     <Compile Include="Model\Product\ProductCategory.cs" />
     <Compile Include="Model\Product\ProductFamily.cs" />
     <Compile Include="Model\Account\Supplier.cs" />
+    <Compile Include="Model\Purchase\PurchaseAttachment.cs" />
+    <Compile Include="Model\Purchase\PurchaseCreditNote.cs" />
+    <Compile Include="Model\Purchase\PurchaseInvoice.cs" />
+    <Compile Include="Model\Purchase\PurchaseManualJournal.cs" />
     <Compile Include="Model\Purchase\PurchaseOrder.cs" />
+    <Compile Include="Model\Purchase\PurchasePayments.cs" />
+    <Compile Include="Model\Purchase\PurchaseStockReceived.cs" />
     <Compile Include="Model\Purchase\SimplePurchase.cs" />
     <Compile Include="Model\Purchase\PurchasesList.cs" />
     <Compile Include="Model\Tax.cs" />

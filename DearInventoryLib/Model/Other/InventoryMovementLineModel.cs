@@ -1,8 +1,9 @@
-﻿using System;
+﻿using DearInventoryLib.Model.Common;
+using System;
 
 namespace DearInventoryLib.Model.Other
 {
-    public class InventoryMovementLineModel
+    public class InventoryMovementLineModel : AdditionalFields
     {
         public Guid TaskID { get; set; }
         public Guid ProductID { get; set; }
