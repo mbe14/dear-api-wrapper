@@ -5,7 +5,6 @@ using System.Runtime.Serialization;
 
 namespace DearInventoryLib.Model.Common
 {
-    // All Objects that contain field 'ProductID', also contain additional fields.
     public class AdditionalFields
     {
         public Guid ProductID { get; set; }
