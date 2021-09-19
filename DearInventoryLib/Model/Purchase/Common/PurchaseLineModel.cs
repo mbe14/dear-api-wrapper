@@ -2,12 +2,12 @@
 
 namespace DearInventoryLib.Model.Purchase.Common
 {
-    public class PurchaseOrderLineModel : BaseLineModel
+    public class PurchaseOrderLineModel : LineModel
     {
 
     }
 
-    public class PurchaseInvoiceLineModel : BaseLineModel
+    public class PurchaseInvoiceLineModel : LineModel
     {
 
     }

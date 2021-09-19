@@ -1,5 +1,5 @@
 ﻿using DearInventoryLib.Api;
-using DearInventoryLib.Model;
+using DearInventoryLib.Model.Tax;
 using DearInventoryLib.Model.Other;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;

@@ -1,4 +1,4 @@
-﻿using DearInventoryLib.Model;
+﻿using DearInventoryLib.Model.Tax;
 using System.Collections.Generic;
 
 namespace DearInventoryLib.Interface

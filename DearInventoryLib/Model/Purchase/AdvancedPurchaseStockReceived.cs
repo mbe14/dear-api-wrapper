@@ -19,7 +19,6 @@ namespace DearInventoryLib.Model.Purchase
     {
         public DateTime Date { get; set; }
         public decimal Quantity { get; set; }
-        public Guid ProductID { get; set; }
         public string SKU { get; set; }
         public string Name { get; set; }
         public string Location { get; set; }

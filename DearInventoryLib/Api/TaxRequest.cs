@@ -1,5 +1,5 @@
 ﻿using DearInventoryLib.Interface;
-using DearInventoryLib.Model;
+using DearInventoryLib.Model.Tax;
 using DearInventoryLib.Service;
 using Newtonsoft.Json;
 using System.Collections.Generic;

@@ -4,9 +4,8 @@ using System.Collections.Generic;
 
 namespace DearInventoryLib.Model.Account
 {
-    public class Account
+    public class Account : MainObject
     {
-        public Guid ID { get; set; }
         public string Name { get; set; }
         public string Currency { get; set; }
         public string PaymentTerm { get; set; }

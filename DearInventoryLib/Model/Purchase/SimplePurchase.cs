@@ -31,9 +31,8 @@ namespace DearInventoryLib.Model.Purchase
 
     }
 
-    public class BaseSimplePurchase
+    public class BaseSimplePurchase : MainObject
     {
-        public Guid ID { get; set; }
         public Guid SupplierID { get; set; }
         public string Supplier { get; set; }
         public string Contact { get; set; }

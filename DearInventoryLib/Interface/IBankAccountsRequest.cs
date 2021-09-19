@@ -1,4 +1,5 @@
 ﻿using DearInventoryLib.Model;
+using DearInventoryLib.Model.Bank;
 using System;
 using System.Collections.Generic;
 

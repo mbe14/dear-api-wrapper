@@ -44,7 +44,7 @@ namespace DearInventoryLib.Model.Purchase
         public List<AdvancedPurchasePutAwayLineModel> Lines { get; set; }
     }
 
-    public class AdvancedPurchasePutAwayLineModel : BaseLineModel
+    public class AdvancedPurchasePutAwayLineModel : LineModel
     {
         public DateTime Date { get; set; }
         public string Location { get; set; }

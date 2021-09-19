@@ -7,10 +7,8 @@ namespace DearInventoryLib.Model.Account
         public string AccountPayable { get; set; }
     }
 
-    public class SuppliersList
+    public class SuppliersList : PageObject
     {
-        public int Total { get; set; }
-        public int Page { get; set; }
         public List<Supplier> SupplierList { get; set; }
     }
 }

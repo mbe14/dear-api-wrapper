@@ -2,9 +2,8 @@
 
 namespace DearInventoryLib.Model.Common
 {
-    public class Contact
+    public class Contact : MainObject
     {
-        public Guid ID { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
         public string MobilePhone { get; set; }

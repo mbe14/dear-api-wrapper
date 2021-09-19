@@ -1,17 +1,14 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DearInventoryLib.Model.Common
 {
     // All Objects that contain field 'ProductID', also contain additional fields.
     public class AdditionalFields
     {
+        public Guid ProductID { get; set; }
         public decimal? ProductLength { get; set; }
         public decimal? ProductWidth { get; set; }
         public decimal? ProductHeight { get; set; }

@@ -2,9 +2,8 @@
 
 namespace DearInventoryLib.Model.Other
 {
-    public class SalePaymentLineModel
+    public class SalePaymentLineModel : MainObject
     {
-        public Guid ID { get; set; }
         public string Reference { get; set; }
         public decimal Amount { get; set; }
         public DateTime DatePaid { get; set; }

@@ -2,7 +2,7 @@
 
 namespace DearInventoryLib.Model.Purchase.Common
 {
-    public class PurchaseUnstockLineModel : BaseStockLineModel
+    public class PurchaseUnstockLineModel : StockLineModel
     {
     }
 }

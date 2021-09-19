@@ -2,18 +2,15 @@
 using System;
 using System.Collections.Generic;
 
-namespace DearInventoryLib.Model
+namespace DearInventoryLib.Model.Tax
 {
-    public class TaxList
+    public class TaxList : PageObject
     {
-        public int Total { get; set; }
-        public int Page { get; set; }
         public List<Tax> TaxRuleList { get; set; }
     }
 
-    public class Tax
+    public class Tax : MainObject
     {
-        public Guid ID { get; set; }
         public string Name { get; set; }
         public string Account { get; set; }
         public bool IsActive { get; set; }

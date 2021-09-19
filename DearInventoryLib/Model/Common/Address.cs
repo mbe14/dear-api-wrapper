@@ -5,9 +5,8 @@ using System.Runtime.Serialization;
 
 namespace DearInventoryLib.Model.Common
 {
-    public class Address
+    public class Address : MainObject
     {
-        public Guid ID { get; set; }
         public string Line1 { get; set; }
         public string Line2 { get; set; }
         public string City { get; set; }

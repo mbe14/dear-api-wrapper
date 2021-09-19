@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DearInventoryLib.Model
+namespace DearInventoryLib.Model.Me
 {
     public class Me
     {

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 
 namespace DearInventoryLib.Model.ProductAvailability
 {
-    public class ProductAvailabilityList
+    public class ProductAvailabilityList : MainObject
     {
-        public Guid ID { get; set; }
         public string SKU { get; set; }
         public string Name { get; set; }
         public string Barcode { get; set; }
@@ -20,10 +19,8 @@ namespace DearInventoryLib.Model.ProductAvailability
         public decimal StockOnHand { get; set; }
     }
 
-    public class ProductAvailability
+    public class ProductAvailability : PageObject
     {
-        public int Total { get; set; }
-        public int Page { get; set; }
         public List<ProductAvailabilityList> ProductAvailabilityList { get; set; }
     }
 }

@@ -5,10 +5,9 @@ using System.Runtime.Serialization;
 
 namespace DearInventoryLib.Model.Purchase
 {
-    public class PurchasePayments
+    public class PurchasePayments : MainObject
     {
         public Guid TaskID { get; set; }
-        public Guid ID { get; set; }
         public PaymentType Type { get; set; }
         public string Reference { get; set; }
         public decimal Amount { get; set; }

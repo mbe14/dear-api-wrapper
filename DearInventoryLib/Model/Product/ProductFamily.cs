@@ -5,16 +5,13 @@ using System.Collections.Generic;
 
 namespace DearInventoryLib.Model.ProductFamily
 {
-    public class ProductFamilyList
+    public class ProductFamilyList : PageObject
     {
-        public int Total { get; set; }
-        public int Page { get; set; }
         public List<ProductFamily> ProductFamilies { get; set; }
     }
 
-    public class Product
+    public class Product: MainObject
     {
-        public Guid ID { get; set; }
         public string SKU { get; set; }
         public string Name { get; set; }
         public string Option1 { get; set; }

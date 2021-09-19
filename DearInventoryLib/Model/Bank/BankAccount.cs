@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DearInventoryLib.Model
+namespace DearInventoryLib.Model.Bank
 {
     public class BankAccount
     {
@@ -17,10 +17,8 @@ namespace DearInventoryLib.Model
 
     }
 
-    public class BankAccountsList
+    public class BankAccountsList : PageObject
     {
-        public int Total { get; set; }
-        public int Page { get; set; }
         public List<BankAccount> BankAccounts { get; set; }
     }
 }

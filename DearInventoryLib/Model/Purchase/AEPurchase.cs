@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace DearInventoryLib.Model.Purchase
 {
-    public class AEPurchase
+    public class AEPurchase : MainObject
     {
-        public Guid ID { get; set; } //Unique DEAR Purchase ID.Required for PUT
         public Guid SupplierID { get; set; } // Identifier of Supplier. Required if Supplier not provided
         public string Supplier { get; set; }
         public string Contact { get; set; }

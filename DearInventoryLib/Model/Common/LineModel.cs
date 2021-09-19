@@ -5,9 +5,8 @@ using System.Runtime.Serialization;
 
 namespace DearInventoryLib.Model.Common
 {
-    public class BaseLineModel : AdditionalFields
+    public class LineModel : AdditionalFields
     {
-        public Guid ProductID { get; set; }
         public string SKU { get; set; }
         public string Name { get; set; }
         public decimal Quantity { get; set; }

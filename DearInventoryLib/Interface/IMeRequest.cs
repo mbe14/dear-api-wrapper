@@ -1,4 +1,4 @@
-﻿using DearInventoryLib.Model;
+﻿using DearInventoryLib.Model.Me;
 
 namespace DearInventoryLib.Interface
 {

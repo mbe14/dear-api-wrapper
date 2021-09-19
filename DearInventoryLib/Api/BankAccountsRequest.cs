@@ -1,5 +1,5 @@
 ﻿using DearInventoryLib.Interface;
-using DearInventoryLib.Model;
+using DearInventoryLib.Model.Bank;
 using DearInventoryLib.Service;
 using Newtonsoft.Json;
 using System;
