@@ -1,4 +1,4 @@
-﻿using DearInventoryLib.Model;
+﻿using DearInventoryLib.Model.AttributeSet;
 using System;
 using System.Collections.Generic;
 

@@ -61,10 +61,10 @@
     <Compile Include="Api\ProductRequest.cs" />
     <Compile Include="Api\PurchaseRequest.cs" />
     <Compile Include="Api\TaxRequest.cs" />
-    <Compile Include="DataAccess\Enum\Field.cs" />
-    <Compile Include="DataAccess\Enum\HttpMethod.cs" />
-    <Compile Include="DataAccess\HttpRequestService.cs" />
-    <Compile Include="DataAccess\RequestService.cs" />
+    <Compile Include="Service\Enum\Field.cs" />
+    <Compile Include="Service\Enum\HttpMethod.cs" />
+    <Compile Include="Service\HttpRequestService.cs" />
+    <Compile Include="Service\RequestService.cs" />
     <Compile Include="Interface\IAttributeSetRequest.cs" />
     <Compile Include="Interface\IBankAccountsRequest.cs" />
     <Compile Include="Interface\IAccountRequest.cs" />
@@ -73,7 +73,9 @@
     <Compile Include="Interface\IPurchaseRequest.cs" />
     <Compile Include="Interface\ITaxRequest.cs" />
     <Compile Include="Model\Account\Account.cs" />
-    <Compile Include="Model\AttributeSet.cs" />
+    <Compile Include="Model\AttributeSet\Attribute.cs" />
+    <Compile Include="Model\AttributeSet\AttributeSet.cs" />
+    <Compile Include="Model\AttributeSet\AttributeSetList.cs" />
     <Compile Include="Model\BankAccount.cs" />
     <Compile Include="Model\Common\AdditionalAttribute.cs" />
     <Compile Include="Model\Common\AdditionalFields.cs" />
@@ -87,7 +89,9 @@
     <Compile Include="Model\Common\DocumentStatus.cs" />
     <Compile Include="Model\Common\DropShipMode.cs" />
     <Compile Include="Model\Common\PaymentStatus.cs" />
+    <Compile Include="Model\MainObject.cs" />
     <Compile Include="Model\Other\InventoryMovementLineModel.cs" />
+    <Compile Include="Model\PageObject.cs" />
     <Compile Include="Model\Purchase\AdvancedPurchase.cs" />
     <Compile Include="Model\Purchase\AdvancedPurchaseStockReceived.cs" />
     <Compile Include="Model\Purchase\AEPurchase.cs" />

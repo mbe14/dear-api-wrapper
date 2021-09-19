@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
 
-namespace DearInventoryLib.DataAccess.Enum
+namespace DearInventoryLib.Service
 {
     [JsonConverter(typeof(StringEnumConverter))]
     public enum Field

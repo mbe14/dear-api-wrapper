@@ -1,9 +1,7 @@
-﻿using DearInventoryLib.DataAccess;
-using DearInventoryLib.DataAccess.Enum;
-using DearInventoryLib.Interface;
+﻿using DearInventoryLib.Interface;
 using DearInventoryLib.Model;
+using DearInventoryLib.Service;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;

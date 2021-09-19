@@ -1,12 +1,11 @@
-﻿using DearInventoryLib.DataAccess;
-using DearInventoryLib.DataAccess.Enum;
-using DearInventoryLib.Interface;
+﻿using DearInventoryLib.Interface;
 using DearInventoryLib.Model.Other;
 using DearInventoryLib.Model.Product;
 using DearInventoryLib.Model.ProductAttachment;
 using DearInventoryLib.Model.ProductAvailability;
 using DearInventoryLib.Model.ProductCategory;
 using DearInventoryLib.Model.ProductFamily;
+using DearInventoryLib.Service;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

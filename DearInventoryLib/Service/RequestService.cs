@@ -1,11 +1,10 @@
-﻿using DearInventoryLib.DataAccess.Enum;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DearInventoryLib.DataAccess
+namespace DearInventoryLib.Service
 {
     public class RequestService : HttpRequestService
     {

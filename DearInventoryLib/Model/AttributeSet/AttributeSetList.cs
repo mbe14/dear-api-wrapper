@@ -1,26 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DearInventoryLib.Model
+﻿namespace DearInventoryLib.Model.AttributeSet
 {
-    public class AttributeSet
+    public class AttributeSetList : MainObject
     {
-        public int Total { get; set; }
-        public int Page { get; set; }
-        public List<AttributeSetList> AttributeSetList { get; set; }
-        public AttributeSetList LocationList { get; set; }
-    }
-
-    public class Attribute
-    {
-        public string Name { get; set; }
-        public string Type { get; set; }
-        public string Values { get; set; }
-    }
-
-    public class AttributeSetList
-    {
-        public Guid ID { get; set; } //Required for PUT and DELETE, Ignored for POST operations
         public string Name { get; set; }
         public string Attribute1Name { get; set; }
         public string Attribute1Type { get; set; }

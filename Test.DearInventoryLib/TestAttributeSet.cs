@@ -1,5 +1,5 @@
 ﻿using DearInventoryLib.Api;
-using DearInventoryLib.Model;
+using DearInventoryLib.Model.AttributeSet;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Configuration;

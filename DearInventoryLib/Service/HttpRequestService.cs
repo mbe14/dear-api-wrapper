@@ -1,6 +1,6 @@
 ﻿using System.Net.Http;
 
-namespace DearInventoryLib.DataAccess
+namespace DearInventoryLib.Service
 {
     public class HttpRequestService
     {
