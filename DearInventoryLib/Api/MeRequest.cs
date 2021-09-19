@@ -1,11 +1,13 @@
-﻿using DearInventoryLib.Interface;
+﻿using DearInventoryLib.DataAccess;
+using DearInventoryLib.DataAccess.Enum;
+using DearInventoryLib.Interface;
 using DearInventoryLib.Model;
 using Newtonsoft.Json;
 using System.Net.Http;
 
 namespace DearInventoryLib.Api
 {
-    public class MeRequest : RequestBase, IMeRequest
+    public class MeRequest : RequestService, IMeRequest
     {
         private const string URLAttribute = "me";
         public MeRequest(HttpClient HttpClient, string AccountId, string ApplicationKey) : base(HttpClient, AccountId, ApplicationKey)

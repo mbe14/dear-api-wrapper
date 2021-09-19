@@ -1,4 +1,6 @@
-﻿using DearInventoryLib.Interface;
+﻿using DearInventoryLib.DataAccess;
+using DearInventoryLib.DataAccess.Enum;
+using DearInventoryLib.Interface;
 using DearInventoryLib.Model;
 using Newtonsoft.Json;
 using System;
@@ -8,7 +10,7 @@ using System.Net.Http;
 
 namespace DearInventoryLib.Api
 {
-    public class BankAccountsRequest : RequestBase, IBankAccountsRequest
+    public class BankAccountsRequest : RequestService, IBankAccountsRequest
     {
         private const string URLAttribute = "ref/account/bank";
         public BankAccountsRequest(HttpClient HttpClient, string AccountId, string ApplicationKey) : base(HttpClient, AccountId, ApplicationKey)

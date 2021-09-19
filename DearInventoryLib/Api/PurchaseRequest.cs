@@ -1,4 +1,6 @@
-﻿using DearInventoryLib.Interface;
+﻿using DearInventoryLib.DataAccess;
+using DearInventoryLib.DataAccess.Enum;
+using DearInventoryLib.Interface;
 using DearInventoryLib.Model.Purchase;
 using Newtonsoft.Json;
 using System;
@@ -8,7 +10,7 @@ using System.Net.Http;
 
 namespace DearInventoryLib.Api
 {
-    public class PurchaseRequest : RequestBase, IPurchaseRequest
+    public class PurchaseRequest : RequestService, IPurchaseRequest
     {
         private const string URLAttribute = "purchaseList";
         private const string URLAttributePurchaseOrder = "purchase/order";

@@ -1,4 +1,6 @@
-﻿using DearInventoryLib.Interface;
+﻿using DearInventoryLib.DataAccess;
+using DearInventoryLib.DataAccess.Enum;
+using DearInventoryLib.Interface;
 using DearInventoryLib.Model.Account;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -7,7 +9,7 @@ using System.Net.Http;
 
 namespace DearInventoryLib.Api
 {
-    public class AccountRequest : RequestBase, IAccountRequest
+    public class AccountRequest : RequestService, IAccountRequest
     {
         private const string URLAttributeCustomer = "customer";
         private const string URLAttributeSupplier = "supplier";

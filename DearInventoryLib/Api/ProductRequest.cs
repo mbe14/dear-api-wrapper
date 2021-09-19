@@ -1,4 +1,6 @@
-﻿using DearInventoryLib.Interface;
+﻿using DearInventoryLib.DataAccess;
+using DearInventoryLib.DataAccess.Enum;
+using DearInventoryLib.Interface;
 using DearInventoryLib.Model.Other;
 using DearInventoryLib.Model.Product;
 using DearInventoryLib.Model.ProductAttachment;
@@ -14,7 +16,7 @@ using Product = DearInventoryLib.Model.Product.Product;
 
 namespace DearInventoryLib.Api
 {
-    public class ProductRequest : RequestBase, IProductRequest
+    public class ProductRequest : RequestService, IProductRequest
     {
         private const string URLAttribute = "product";
         private const string URLAttributeAttachments = "product/attachments";

@@ -1,25 +1,18 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿using DearInventoryLib.DataAccess.Enum;
+using Newtonsoft.Json;
 using System;
 using System.Net.Http;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DearInventoryLib.Api
+namespace DearInventoryLib.DataAccess
 {
-    public class RequestBase
+    public class RequestService : HttpRequestService
     {
-        protected readonly HttpClient _httpClient;
-        protected readonly string _accountId;
-        protected readonly string _applicationKey;
         internal static string URLParameter;
-
-        public RequestBase(HttpClient HttpClient, string AccountId, string ApplicationKey)
+        public RequestService(HttpClient HttpClient, string AccountId, string ApplicationKey) :base(HttpClient, AccountId, ApplicationKey)
         {
-            _httpClient = HttpClient;
-            _accountId = AccountId;
-            _applicationKey = ApplicationKey;
+
         }
 
         internal System.Net.HttpStatusCode SendHttpRequest(HTTPMethod httpMethod, out string response, object content = null)
@@ -62,7 +55,7 @@ namespace DearInventoryLib.Api
             return httpResponseMessage.StatusCode;
         }
 
-        internal string RetrieveDataByField(Field field, string filter, string URLAttribute)
+        public string RetrieveDataByField(Field field, string filter, string URLAttribute)
         {
             string result = string.Empty;
             switch (field)
@@ -85,38 +78,6 @@ namespace DearInventoryLib.Api
                 result = httpResponse;
             }
             return result;
-        }
-
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum HTTPMethod
-        {
-            [EnumMember(Value = "GET")]
-            GET,
-
-            [EnumMember(Value = "PUT")]
-            PUT,
-
-            [EnumMember(Value = "POST")]
-            POST,
-
-            [EnumMember(Value = "DELETE")]
-            DELETE
-        }
-
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum Field
-        {
-            [EnumMember(Value = "ID")]
-            ID,
-
-            [EnumMember(Value = "Bank")]
-            Bank,
-
-            [EnumMember(Value = "Name")]
-            AccountName,
-
-            [EnumMember(Value = "Sku")]
-            SKU
         }
     }
 }

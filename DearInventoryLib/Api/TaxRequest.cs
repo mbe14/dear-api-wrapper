@@ -1,4 +1,6 @@
-﻿using DearInventoryLib.Interface;
+﻿using DearInventoryLib.DataAccess;
+using DearInventoryLib.DataAccess.Enum;
+using DearInventoryLib.Interface;
 using DearInventoryLib.Model;
 using Newtonsoft.Json;
 using System;
@@ -8,7 +10,7 @@ using System.Net.Http;
 
 namespace DearInventoryLib.Api
 {
-    public class TaxRequest : RequestBase, ITaxRequest
+    public class TaxRequest : RequestService, ITaxRequest
     {
         private const string URLAttribute = "ref/tax";
         public TaxRequest(HttpClient HttpClient, string AccountId, string ApplicationKey) : base(HttpClient, AccountId, ApplicationKey)
