@@ -2,7 +2,7 @@
 
 namespace DearInventoryLib.Model.Common
 {
-    public class SalePaymentLineModel : MainObject
+    public class SalePaymentLineModel : DIModel
     {
         public string Reference { get; set; }
         public decimal Amount { get; set; }

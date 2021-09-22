@@ -1,6 +1,6 @@
 ﻿namespace DearInventoryLib.Model
 {
-    public class PageObject
+    public class PagedData
     {
         public int Total { get; set; }
         public int Page { get; set; }

@@ -3,7 +3,7 @@ using System;
 
 namespace DearInventoryLib.Model.Product
 {
-    public class BaseProduct : MainObject
+    public class BaseProduct : DIModel
     {
         public string SKU { get; set; }
         public string Name { get; set; }

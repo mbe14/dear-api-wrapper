@@ -1,5 +1,4 @@
 ﻿using DearInventoryLib.Model.Common;
-using DearInventoryLib.Model.Common;
 using DearInventoryLib.Model.Purchase.Common;
 using System;
 using System.Collections.Generic;
@@ -31,7 +30,7 @@ namespace DearInventoryLib.Model.Purchase
 
     }
 
-    public class BaseSimplePurchase : MainObject
+    public class BaseSimplePurchase : DIModel
     {
         public Guid SupplierID { get; set; }
         public string Supplier { get; set; }

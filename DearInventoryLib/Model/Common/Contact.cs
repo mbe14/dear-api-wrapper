@@ -2,7 +2,7 @@
 
 namespace DearInventoryLib.Model.Common
 {
-    public class Contact : MainObject
+    public class Contact : DIModel
     {
         public string Name { get; set; }
         public string Phone { get; set; }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DearInventoryLib.Model.ProductAvailability
 {
-    public class ProductAvailabilityList : MainObject
+    public class ProductAvailabilityList : DIModel
     {
         public string SKU { get; set; }
         public string Name { get; set; }
@@ -19,7 +19,7 @@ namespace DearInventoryLib.Model.ProductAvailability
         public decimal StockOnHand { get; set; }
     }
 
-    public class ProductAvailability : PageObject
+    public class ProductAvailability : PagedData
     {
         public List<ProductAvailabilityList> ProductAvailabilityList { get; set; }
     }

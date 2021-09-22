@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 
 namespace DearInventoryLib.Model.Purchase
 {
-    public class PurchasePayments : MainObject
+    public class PurchasePayments : DIModel
     {
         public Guid TaskID { get; set; }
         public PaymentType Type { get; set; }

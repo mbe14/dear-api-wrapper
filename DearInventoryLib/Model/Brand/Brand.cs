@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DearInventoryLib.Model.Brand
 {
-    public class Brand : MainObject
+    public class Brand : DIModel
     {
         public string Name { get; set; }
     }

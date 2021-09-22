@@ -14,7 +14,7 @@ namespace DearInventoryLib.Model.Account
         public int CreditLimit { get; set; }
     }
 
-    public class CustomersList : PageObject
+    public class CustomersList : PagedData
     {
         public List<Customer> CustomerList { get; set; }
     }

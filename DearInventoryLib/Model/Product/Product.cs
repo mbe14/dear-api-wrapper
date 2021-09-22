@@ -126,7 +126,7 @@ namespace DearInventoryLib.Model.Product
         public List<Attachment> Attachments { get; set; }
     }
 
-    public class ProductList : PageObject
+    public class ProductList : PagedData
     {
         public List<Product> Products { get; set; }
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DearInventoryLib.Model.Purchase
 {
-    public class AEPurchase : MainObject
+    public class AEPurchase : DIModel
     {
         public Guid SupplierID { get; set; } // Identifier of Supplier. Required if Supplier not provided
         public string Supplier { get; set; }

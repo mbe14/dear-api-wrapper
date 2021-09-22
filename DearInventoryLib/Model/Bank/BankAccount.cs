@@ -17,7 +17,7 @@ namespace DearInventoryLib.Model.Bank
 
     }
 
-    public class BankAccountsList : PageObject
+    public class BankAccountsList : PagedData
     {
         public List<BankAccount> BankAccounts { get; set; }
     }

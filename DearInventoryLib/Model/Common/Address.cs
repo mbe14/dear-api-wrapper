@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 
 namespace DearInventoryLib.Model.Common
 {
-    public class Address : MainObject
+    public class Address : DIModel
     {
         public string Line1 { get; set; }
         public string Line2 { get; set; }
@@ -13,7 +13,7 @@ namespace DearInventoryLib.Model.Common
         public string State { get; set; }
         public string Postcode { get; set; }
         public string Country { get; set; }
-        public Type Type { get; set; }
+        public AddressType Type { get; set; }
         public bool DefaultForType { get; set; }
     }
 
@@ -36,7 +36,7 @@ namespace DearInventoryLib.Model.Common
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum Type
+    public enum AddressType
     {
         [EnumMember(Value = "Billing")]
         Billing,

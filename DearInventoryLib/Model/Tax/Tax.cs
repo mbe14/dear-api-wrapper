@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace DearInventoryLib.Model.Tax
 {
-    public class TaxList : PageObject
+    public class TaxList : PagedData
     {
         public List<Tax> TaxRuleList { get; set; }
     }
 
-    public class Tax : MainObject
+    public class Tax : DIModel
     {
         public string Name { get; set; }
         public string Account { get; set; }

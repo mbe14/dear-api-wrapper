@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DearInventoryLib.Model.Account
 {
-    public class Account : MainObject
+    public class Account : DIModel
     {
         public string Name { get; set; }
         public string Currency { get; set; }

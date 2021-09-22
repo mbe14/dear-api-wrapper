@@ -2,7 +2,7 @@
 
 namespace DearInventoryLib.Model
 {
-    public class MainObject
+    public class DIModel
     {
         public Guid ID { get; set; }
     }

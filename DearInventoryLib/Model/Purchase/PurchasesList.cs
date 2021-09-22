@@ -4,13 +4,13 @@ using System.Collections.Generic;
 
 namespace DearInventoryLib.Model.Purchase
 {
-    public class PurchasesList : PageObject
+    public class PurchasesList : PagedData
     {
         public List<PurchaseData> PurchaseList { get; set; }
 
     }
 
-    public class PurchaseData : MainObject
+    public class PurchaseData : DIModel
     {
         public bool BlindReceipt { get; set; }
         public string OrderNumber { get; set; }

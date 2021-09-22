@@ -2,7 +2,7 @@
 
 namespace DearInventoryLib.Model.Common
 {
-    public class AttachmentLineModel : MainObject
+    public class AttachmentLineModel : DIModel
     {
         public string ContentType { get; set; }
         public bool IsDefault { get; set; }

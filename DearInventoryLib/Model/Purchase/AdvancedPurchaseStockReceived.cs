@@ -9,8 +9,8 @@ namespace DearInventoryLib.Model.Purchase
 {    
     public class AdvancedPurchaseStockReceived
     {
-        public Guid PurchaseID { get; set; }
         public Guid TaskID { get; set; }
+        public Guid PurchaseID { get; set; }
         public Status Status { get; set; }
         public List<AdvancedPurchaseStockLineModel> Lines { get; set; }
     }

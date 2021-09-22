@@ -5,12 +5,12 @@ using System.Collections.Generic;
 
 namespace DearInventoryLib.Model.ProductFamily
 {
-    public class ProductFamilyList : PageObject
+    public class ProductFamilyList : PagedData
     {
         public List<ProductFamily> ProductFamilies { get; set; }
     }
 
-    public class Product: MainObject
+    public class Product: DIModel
     {
         public string SKU { get; set; }
         public string Name { get; set; }

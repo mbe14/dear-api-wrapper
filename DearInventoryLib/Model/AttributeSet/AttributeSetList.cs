@@ -1,6 +1,6 @@
 ﻿namespace DearInventoryLib.Model.AttributeSet
 {
-    public class AttributeSetList : MainObject
+    public class AttributeSetList : DIModel
     {
         public string Name { get; set; }
         public string Attribute1Name { get; set; }
