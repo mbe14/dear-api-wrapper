@@ -1,5 +1,4 @@
 ﻿using DearInventoryLib.Model.Common;
-using DearInventoryLib.Model.Common;
 using System.Collections.Generic;
 
 namespace DearInventoryLib.Model.Purchase.Common

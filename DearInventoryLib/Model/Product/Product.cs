@@ -1,5 +1,4 @@
 ﻿using DearInventoryLib.Model.Common;
-using DearInventoryLib.Model.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;

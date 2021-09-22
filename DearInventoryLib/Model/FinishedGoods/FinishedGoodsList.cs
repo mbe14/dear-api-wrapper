@@ -1,7 +1,7 @@
 ﻿using DearInventoryLib.Model.Common;
 using System;
 
-namespace DearInventoryLib.Model.FinnishedGoods
+namespace DearInventoryLib.Model.FinishedGoods
 {
     public class FinishedGoodsList : AdditionalFields
     {

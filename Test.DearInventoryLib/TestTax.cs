@@ -1,6 +1,6 @@
 ﻿using DearInventoryLib.Api;
+using DearInventoryLib.Model.Common;
 using DearInventoryLib.Model.Tax;
-using DearInventoryLib.Model.Other;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
