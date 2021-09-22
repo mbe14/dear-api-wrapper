@@ -1,4 +1,4 @@
-﻿using DearInventoryLib.Model.Other;
+﻿using DearInventoryLib.Model.Common;
 using System;
 using System.Collections.Generic;
 

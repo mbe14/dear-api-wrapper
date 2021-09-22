@@ -1,4 +1,4 @@
-﻿namespace DearInventoryLib.Model.Other
+﻿namespace DearInventoryLib.Model.Common
 {
     public class TaxComponent
     {

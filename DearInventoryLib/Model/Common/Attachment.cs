@@ -1,13 +1,10 @@
-﻿using System;
-
-namespace DearInventoryLib.Model.Other
+﻿namespace DearInventoryLib.Model.Common
 {
-    public class AttachmentLineModel : MainObject
+    public class Attachment
     {
+        public string ID { get; set; }
         public string ContentType { get; set; }
-        public bool IsDefault { get; set; }
         public string FileName { get; set; }
         public string DownloadUrl { get; set; }
-
     }
 }

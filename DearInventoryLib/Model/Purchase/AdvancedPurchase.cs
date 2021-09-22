@@ -1,5 +1,5 @@
 ﻿using DearInventoryLib.Model.Common;
-using DearInventoryLib.Model.Other;
+using DearInventoryLib.Model.Common;
 using DearInventoryLib.Model.Purchase.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;

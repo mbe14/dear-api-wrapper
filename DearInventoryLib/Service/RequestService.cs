@@ -54,7 +54,7 @@ namespace DearInventoryLib.Service
             return httpResponseMessage.StatusCode;
         }
 
-        public string RetrieveDataByField(Field field, string filter, string URLAttribute)
+        internal string RetrieveDataByField(Field field, string filter, string URLAttribute)
         {
             string result = string.Empty;
             switch (field)

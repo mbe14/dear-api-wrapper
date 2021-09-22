@@ -1,4 +1,4 @@
-﻿using DearInventoryLib.Model.Other;
+﻿using DearInventoryLib.Model.Common;
 using DearInventoryLib.Model.ProductAvailability;
 using DearInventoryLib.Model.ProductCategory;
 using DearInventoryLib.Model.ProductFamily;

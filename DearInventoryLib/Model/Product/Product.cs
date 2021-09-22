@@ -1,5 +1,5 @@
 ﻿using DearInventoryLib.Model.Common;
-using DearInventoryLib.Model.Other;
+using DearInventoryLib.Model.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
@@ -87,7 +87,7 @@ namespace DearInventoryLib.Model.Product
 
     public class Product : BaseProduct
     {
-        public Type Type { get; set; }
+        public ProductType Type { get; set; }
         public decimal Length { get; set; }
         public decimal Width { get; set; }
         public decimal Height { get; set; }
@@ -147,7 +147,7 @@ namespace DearInventoryLib.Model.Product
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum Type
+    public enum ProductType
     {
         [EnumMember(Value = "Stock")]
         Stock,

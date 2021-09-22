@@ -1,5 +1,5 @@
 ﻿using DearInventoryLib.Interface;
-using DearInventoryLib.Model.Other;
+using DearInventoryLib.Model.Common;
 using DearInventoryLib.Model.Product;
 using DearInventoryLib.Model.ProductAttachment;
 using DearInventoryLib.Model.ProductAvailability;

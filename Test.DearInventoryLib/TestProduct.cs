@@ -8,7 +8,7 @@ using System;
 using System.Configuration;
 using System.Linq;
 using Product = DearInventoryLib.Model.Product.Product;
-using Type = DearInventoryLib.Model.Product.Type;
+using ProductType = DearInventoryLib.Model.Product.ProductType;
 
 namespace Test.DearInventoryLib
 {
@@ -84,7 +84,7 @@ namespace Test.DearInventoryLib
                 Status = Status.Active,
                 AverageCost = 50,
                 SKU = "PCO01",
-                Type = Type.Stock,
+                Type = ProductType.Stock,
                 CostingMethod = CostingMethod.FIFO,
                 QuantityToProduce = 100
             };
@@ -111,7 +111,7 @@ namespace Test.DearInventoryLib
                 Status = Status.Active,
                 AverageCost = 50,
                 SKU = "PCO01",
-                Type = Type.Stock,
+                Type = ProductType.Stock,
                 CostingMethod = CostingMethod.FIFO,
                 QuantityToProduce = 100,
                 Category = "Test Category",

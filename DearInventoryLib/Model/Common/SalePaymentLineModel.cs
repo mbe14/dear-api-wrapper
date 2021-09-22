@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DearInventoryLib.Model.Other
+namespace DearInventoryLib.Model.Common
 {
     public class SalePaymentLineModel : MainObject
     {

@@ -61,6 +61,8 @@
     <Compile Include="Api\ProductRequest.cs" />
     <Compile Include="Api\PurchaseRequest.cs" />
     <Compile Include="Api\TaxRequest.cs" />
+    <Compile Include="Model\Brand\Brand.cs" />
+    <Compile Include="Model\Carrier\Carrier.cs" />
     <Compile Include="Model\Me\Me.cs" />
     <Compile Include="Service\Enum\Field.cs" />
     <Compile Include="Service\Enum\HttpMethod.cs" />
@@ -91,7 +93,7 @@
     <Compile Include="Model\Common\Enums\DropShipMode.cs" />
     <Compile Include="Model\Common\Enums\PaymentStatus.cs" />
     <Compile Include="Model\MainObject.cs" />
-    <Compile Include="Model\Other\InventoryMovementLineModel.cs" />
+    <Compile Include="Model\Common\InventoryMovementLineModel.cs" />
     <Compile Include="Model\PageObject.cs" />
     <Compile Include="Model\Purchase\AdvancedPurchase.cs" />
     <Compile Include="Model\Purchase\AdvancedPurchaseStockReceived.cs" />
@@ -107,13 +109,13 @@
     <Compile Include="Model\Common\Enums\Status.cs" />
     <Compile Include="Model\Account\Customer.cs" />
     <Compile Include="Model\Common\Enums\TypeOfPurchase.cs" />
-    <Compile Include="Model\Other\Attachment.cs" />
-    <Compile Include="Model\Other\AttachmentLineModel.cs" />
+    <Compile Include="Model\Common\Attachment.cs" />
+    <Compile Include="Model\Common\AttachmentLineModel.cs" />
     <Compile Include="Model\Purchase\Common\PurchaseStockLineModel.cs" />
     <Compile Include="Model\Purchase\Common\PurchaseStockModel.cs" />
     <Compile Include="Model\Purchase\Common\PurchaseUnstockLineModel.cs" />
-    <Compile Include="Model\Other\SalePaymentLineModel.cs" />
-    <Compile Include="Model\Other\TaxComponent.cs" />
+    <Compile Include="Model\Common\SalePaymentLineModel.cs" />
+    <Compile Include="Model\Common\TaxComponent.cs" />
     <Compile Include="Model\Product\Product.cs" />
     <Compile Include="Model\Product\ProductAttachment.cs" />
     <Compile Include="Model\Product\ProductAvailability.cs" />
