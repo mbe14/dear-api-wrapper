@@ -84,7 +84,7 @@ namespace DearInventoryLib.Model.Product
         public string FromTo { get; set; }
     }
 
-    public class Product : BaseProduct
+    public class Product : _Product
     {
         public ProductType Type { get; set; }
         public decimal Length { get; set; }

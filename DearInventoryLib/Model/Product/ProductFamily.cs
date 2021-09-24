@@ -19,7 +19,7 @@ namespace DearInventoryLib.Model.ProductFamily
         public string Option3 { get; set; }
     }
 
-    public class ProductFamily : BaseProduct
+    public class ProductFamily : _Product
     {
         public List<Product> Products { get; set; }
         public string Option1Name { get; set; }
